@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-const App = () => {
-  return <div className="App">Main.</div>;
-};
-
-export default App;
+export default class App extends Component {
+  componentDidMount() {
+    this.props.history.push('/movies');
+  }
+  render() {
+    return <div className="App"></div>;
+  }
+}
