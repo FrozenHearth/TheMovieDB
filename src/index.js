@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
 import App from './App';
-import MovieList from './components/movies/MovieList';
+import MovieList from './components/movies/movie-list/MovieList';
 import MovieDetails from './components/movies/MovieDetails';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
