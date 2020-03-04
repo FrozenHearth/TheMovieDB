@@ -1,6 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
+import MovieList from './components/movies/MovieList';
+import MovieDetails from './components/movies/MovieDetails';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+render(
+  <Router>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route exact path="/movies" component={MovieList} />
+      <Route exact path="/movies/:id" component={MovieDetails} />
+    </Switch>
+  </Router>,
+  rootElement
+);
