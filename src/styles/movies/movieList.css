@@ -1,0 +1,12 @@
+.movie_card_container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 2em auto 2em auto;
+}
+
+.movie_poster {
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
