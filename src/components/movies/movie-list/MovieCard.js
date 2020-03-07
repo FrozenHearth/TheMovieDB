@@ -9,6 +9,7 @@ import { imageURL } from '../../../utils/ImageURL';
 import { withStyles } from '@material-ui/core/styles';
 import { trunc } from '../../../utils/truncateString';
 import { Link } from 'react-router-dom';
+import '../../../styles/movies/movieList.css';
 
 const styles = {
   movieCard: {

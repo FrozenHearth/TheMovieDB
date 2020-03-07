@@ -1,0 +1,14 @@
+.movie_poster {
+  width: 400px;
+  object-fit: cover;
+}
+
+.movie-details {
+  background: black;
+  color: white;
+  width: 100%;
+}
+
+.more_details {
+  display: flex;
+}
