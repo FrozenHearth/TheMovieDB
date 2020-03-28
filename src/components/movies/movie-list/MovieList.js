@@ -47,7 +47,7 @@ class MovieList extends Component {
   render() {
     const { popularMovies, popularMoviesGenres } = this.state;
     return (
-      <>
+      <div className="movie-list-wrapper">
         <Header />
         <div className="movie_card_container">
           <MovieCard
@@ -55,7 +55,7 @@ class MovieList extends Component {
             popularMoviesGenres={popularMoviesGenres}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
