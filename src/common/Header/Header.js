@@ -36,7 +36,7 @@ class Header extends Component {
       [name]: value
     });
 
-    if (searchTerm !== '') {
+    if (searchTerm.trim() !== '') {
       axios
         .get(
           `${movieSearchURL}api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=true&query=${searchTerm}`
@@ -45,12 +45,14 @@ class Header extends Component {
           this.setState({ searchResults: item.data.results.slice(0, 10) });
         });
     } else {
-      return;
+      this.setState({
+        searchResults: []
+      });
     }
   };
   render() {
-    const { classes, searchTerm } = this.props;
-    const { searchResults } = this.state;
+    const { classes } = this.props;
+    const { searchResults, searchTerm } = this.state;
     return (
       <>
         <div className={classes.searchMoviesInputWrapper}>
@@ -67,13 +69,14 @@ class Header extends Component {
             <SearchIcon />
           </IconButton>
         </div>
-        {searchResults.length ? (
-          <Debounce ms={2000}>
-            <SearchResults searchResults={searchResults} />
+        {searchTerm !== '' ? (
+          <Debounce ms={1000}>
+            <SearchResults
+              searchTerm={searchTerm}
+              searchResults={searchResults}
+            />
           </Debounce>
-        ) : (
-          ''
-        )}
+        ) : null}
       </>
     );
   }
