@@ -9,6 +9,68 @@
   width: 100%;
 }
 
-.more_details {
+.movie-details-wrapper {
   display: flex;
+  align-items: center;
+  margin: 8em 0 0 0;
+  overscroll-behavior: none;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.movie-title {
+  font-weight: 800;
+  font-size: 3.5em;
+}
+
+.subtitles-container {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+}
+
+.vertical-divider {
+  border-left: 2px solid #ed462f;
+  margin: 0 0.5em;
+  height: 2em;
+}
+
+.movie-overview {
+  line-height: 2em;
+  font-weight: 600;
+  color: rgb(194, 194, 194);
+}
+
+.movie-runtime,
+.movie-category,
+.movie-genres,
+.movie-release-date,
+.movie-overview,
+.movie-tagline {
+  font-size: 1.6em;
+}
+
+.movie-tagline {
+  font-style: italic;
+  font-weight: 600;
+  position: relative;
+  bottom: 1em;
+}
+
+.movie-overview-wrapper {
+  width: 50%;
+  margin: 1em 0 0 0;
+}
+
+.similar-movies {
+  position: absolute;
+  left: 0;
+  width: inherit;
+  height: 20em;
+  margin-bottom: 8em;
 }
