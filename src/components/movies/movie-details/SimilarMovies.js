@@ -13,7 +13,6 @@ export class SimilarMovies extends Component {
 
     return (
       <div className="similar-movies-wrapper">
-        {/* <h2>Similar Movies</h2> */}
         <h1 className="similar-movies-header">Similar Movies</h1>
         {similarMovies
           ? similarMovies.map((similarMovie, index) => (
