@@ -1,0 +1,31 @@
+.similar-movies-wrapper {
+  display: flex;
+  height: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.similar-movies-header {
+  position: absolute;
+  left: 0.8em;
+}
+
+.similar-movies-poster-wrapper {
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.similar-movies-poster {
+  object-fit: cover;
+  width: 90%;
+  height: 50%;
+  opacity: 0.9;
+}
+
+.similar-movies-poster:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
