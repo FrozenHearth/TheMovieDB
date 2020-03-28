@@ -1,0 +1,20 @@
+.Mui-focused {
+  width: 20.5em !important;
+}
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid grey !important;
+}
+
+.MuiInput-underline:before {
+  border-bottom: 1px solid rgb(230, 230, 230) !important;
+}
+
+::placeholder {
+  color: grey !important;
+}
+
+input {
+  caret-color: grey !important;
+  color: grey !important;
+}

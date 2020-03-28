@@ -13,7 +13,7 @@ import '../../../styles/movies/movieList.css';
 
 const styles = {
   movieCard: {
-    width: '25%',
+    width: '33em',
     margin: '1em auto 2em 2em',
     background: '#1a1421',
     color: 'white'
