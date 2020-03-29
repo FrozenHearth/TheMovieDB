@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import MovieList from './components/movies/movie-list/MovieList';
 
 export default class App extends Component {
-  componentDidMount() {
-    this.props.history.push('/movies');
-  }
   render() {
-    return <div className="App"></div>;
+    return (
+      <div className="App">
+        <MovieList />
+      </div>
+    );
   }
 }
