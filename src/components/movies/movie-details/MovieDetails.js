@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { movieURL } from '../../../utils/apiURLs';
 import axios from 'axios';
 import MovieDetailsCard from './MovieDetailsCard';
+import Header from '../../../common/Header/Header';
 
 class MovieDetails extends Component {
   state = {
@@ -9,7 +10,7 @@ class MovieDetails extends Component {
     similarMovies: [],
     credits: {}
   };
-  componentDidMount() {
+  getMovieDetails = () => {
     const { id } = this.props.match.params;
     axios
       .get(
@@ -19,40 +20,59 @@ class MovieDetails extends Component {
         this.setState({
           movieDetails: res.data
         });
-      })
-      .then(() => {
-        axios
-          .get(
-            `${movieURL}${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
-          )
-          .then(res => {
-            this.setState({
-              similarMovies: res.data.results.slice(0, 4)
-            });
-          });
-      })
-      .then(() => {
-        axios
-          .get(
-            `${movieURL}${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
-          )
-          .then(res => {
-            this.setState({
-              credits: res.data
-            });
-          });
       });
+  };
+  getSimilarMovies = () => {
+    const { id } = this.props.match.params;
+
+    axios
+      .get(
+        `${movieURL}${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+      )
+      .then(res => {
+        this.setState({
+          similarMovies: res.data.results.slice(0, 4)
+        });
+      });
+  };
+  getMovieCredits = () => {
+    const { id } = this.props.match.params;
+
+    axios
+      .get(`${movieURL}${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`)
+      .then(res => {
+        this.setState({
+          credits: res.data
+        });
+      });
+  };
+  componentDidMount() {
+    this.getMovieDetails();
+    this.getSimilarMovies();
+    this.getMovieCredits();
+  }
+
+  componentDidUpdate(prevProps) {
+    // If route changes, re-render the component
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.getMovieDetails();
+      this.getSimilarMovies();
+      this.getMovieCredits();
+    }
   }
   render() {
     const { movieDetails, similarMovies, credits } = this.state;
     return (
-      <div className="movie-details-card-wrapper">
-        <MovieDetailsCard
-          credits={credits}
-          similarMovies={similarMovies}
-          details={movieDetails}
-        />
-      </div>
+      <>
+        <Header />
+        <div className="movie-details-card-wrapper">
+          <MovieDetailsCard
+            credits={credits}
+            similarMovies={similarMovies}
+            details={movieDetails}
+          />
+        </div>
+      </>
     );
   }
 }

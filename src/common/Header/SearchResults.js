@@ -32,8 +32,17 @@ const styles = {
 };
 
 class SearchResults extends Component {
+  state = {
+    closeSearchResults: false
+  };
+  closeSearchResults = () => {
+    this.setState({
+      closeSearchResults: true
+    });
+  };
   render() {
     const { classes, searchResults, searchTerm } = this.props;
+    const { closeSearchResults } = this.state;
 
     return (
       <div
@@ -41,11 +50,11 @@ class SearchResults extends Component {
           searchTerm !== '' ? 'search-results-wrapper' : 'hide-search-results'
         }
       >
-        {searchResults
+        {searchResults && closeSearchResults === false
           ? searchResults.map((item, index) => (
-              <Link className={classes.movieLink} to={`${item.id}`}>
+              <Link key={index} className={classes.movieLink} to={`${item.id}`}>
                 <List
-                  key={index}
+                  onClick={() => this.closeSearchResults()}
                   className={classes.root}
                   component="nav"
                   aria-label="mailbox folders"
@@ -62,7 +71,7 @@ class SearchResults extends Component {
                 </List>
               </Link>
             ))
-          : ''}
+          : null}
       </div>
     );
   }
