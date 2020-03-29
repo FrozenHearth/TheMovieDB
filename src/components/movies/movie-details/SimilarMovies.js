@@ -4,7 +4,7 @@ import { imageURL } from '../../../utils/ImageURL';
 
 export class SimilarMovies extends Component {
   openMovieInNewTab = id => {
-    const win = window.open(id, '_blank');
+    const win = window.open(`#/${id}`, '_blank');
     win.focus();
   };
 

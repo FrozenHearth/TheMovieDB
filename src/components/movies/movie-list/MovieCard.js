@@ -83,7 +83,7 @@ class MovieCard extends Component {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link className={classes.btnLink} to={`/movies/${movie.id}`}>
+                  <Link className={classes.btnLink} to={`${movie.id}`}>
                     <Button className={classes.viewDetails} size="medium">
                       View Details
                     </Button>
