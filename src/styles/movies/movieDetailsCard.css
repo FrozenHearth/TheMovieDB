@@ -51,7 +51,9 @@ a {
 .movie-genres,
 .movie-release-date,
 .movie-overview,
-.movie-tagline {
+.movie-tagline,
+.movie-cast,
+.cast-details-title {
   font-size: 1.6em;
 }
 
@@ -73,4 +75,13 @@ a {
   width: inherit;
   height: 20em;
   margin-bottom: 8em;
+}
+
+.cast-details-wrapper {
+  margin-top: 1em;
+}
+
+.movie-cast + .movie-cast::before {
+  white-space: pre;
+  content: ', ';
 }
