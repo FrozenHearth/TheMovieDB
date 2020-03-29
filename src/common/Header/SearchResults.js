@@ -43,7 +43,7 @@ class SearchResults extends Component {
       >
         {searchResults
           ? searchResults.map((item, index) => (
-              <Link className={classes.movieLink} to={`/movies/${item.id}`}>
+              <Link className={classes.movieLink} to={`${item.id}`}>
                 <List
                   key={index}
                   className={classes.root}
