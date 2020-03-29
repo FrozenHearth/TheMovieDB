@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import '../../../styles/movies/movieDetailsCard.css';
 import SimilarMovies from './SimilarMovies';
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const styles = {
   movieDetailsContainer: {
@@ -40,6 +41,9 @@ const styles = {
     borderRadius: '0',
     background: 'black',
     border: '2px solid #1d2424'
+  },
+  castLink: {
+    textDecoration: 'none'
   }
 };
 
@@ -51,8 +55,7 @@ const MovieDetailsCard = props => {
       <Container
         className={classes.movieDetailsContainer}
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${fullImage ||
-            ''}${details.backdrop_path || ''})`
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${fullImage}${details.backdrop_path})`
         }}
         maxWidth="md"
       >
@@ -82,6 +85,18 @@ const MovieDetailsCard = props => {
           precision={0.5}
           max={10}
         />
+        <div className="cast-details-wrapper">
+          <span className="cast-details-title">Stars: </span>
+          {credits.cast
+            ? credits.cast.slice(0, 4).map((item, index) => (
+                <span key={index} className="movie-cast">
+                  <Link className={classes.castLink} to={`/people/${item.id}`}>
+                    {item.name}
+                  </Link>
+                </span>
+              ))
+            : ''}
+        </div>
         <div className="movie-overview-wrapper">
           <p className="movie-overview">{details.overview}</p>
         </div>
