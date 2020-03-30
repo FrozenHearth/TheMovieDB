@@ -2,7 +2,7 @@ import React from 'react';
 import { smImageURL } from '../../utils/ImageURL';
 import moment from 'moment';
 
-const PeopleDetailsSideBar = props => {
+const Sidebar = props => {
   const { castDetails } = props;
   return (
     <aside className="person-details-sidebar">
@@ -34,4 +34,4 @@ const PeopleDetailsSideBar = props => {
   );
 };
 
-export default PeopleDetailsSideBar;
+export default Sidebar;

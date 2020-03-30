@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { castURL } from '../../utils/apiURLs';
 import '../../styles/people/peopleDetails.css';
-import PeopleDetailsSidebar from './peopleDetailsSidebar';
+import Sidebar from './Sidebar';
 
 class People extends Component {
   state = {
@@ -20,9 +20,7 @@ class People extends Component {
     console.log(castDetails);
     return (
       <div className="person-details-container">
-        {castDetails ? (
-          <PeopleDetailsSidebar castDetails={castDetails} />
-        ) : null}
+        {castDetails ? <Sidebar castDetails={castDetails} /> : null}
       </div>
     );
   }
