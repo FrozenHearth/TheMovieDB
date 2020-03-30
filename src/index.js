@@ -11,9 +11,9 @@ const rootElement = document.getElementById('root');
 render(
   <Router basename={process.env.PUBLIC_URL}>
     <Switch>
-      <Route exact path="/" component={App} />
-      <Route exact path="/:id" component={MovieDetails} />
-      <Route exact path="/people/:id" component={People} />
+      <Route exact path={`/`} component={App} />
+      <Route exact path={`/:id`} component={MovieDetails} />
+      <Route exact path={`/people/:id`} component={People} />
     </Switch>
   </Router>,
   rootElement

@@ -90,7 +90,7 @@ const MovieDetailsCard = props => {
           {credits.cast
             ? credits.cast.slice(0, 4).map((item, index) => (
                 <span key={index} className="movie-cast">
-                  <Link className={classes.castLink} to={`/people/${item.id}`}>
+                  <Link className={classes.castLink} to={`people/${item.id}`}>
                     {item.name}
                   </Link>
                 </span>
