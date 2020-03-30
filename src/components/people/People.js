@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { castURL } from '../../utils/apiURLs';
 import '../../styles/people/peopleDetails.css';
-import Sidebar from './Sidebar';
+import Sidebar from './peopleDetailsSidebar';
 
 class People extends Component {
   state = {
