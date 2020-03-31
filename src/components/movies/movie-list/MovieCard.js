@@ -77,7 +77,7 @@ class MovieCard extends Component {
                     className={classes.movieSubtext}
                     variant="body1"
                     color="textSecondary"
-                    component="p"
+                    component="h5"
                   >
                     {trunc(movie.overview, 90)}
                   </Typography>
