@@ -1,6 +1,7 @@
 import React from 'react';
 import { smImageURL } from '../../utils/ImageURL';
 import moment from 'moment';
+import '../../styles/people/sidebar.css';
 
 const Sidebar = props => {
   const { castDetails } = props;
