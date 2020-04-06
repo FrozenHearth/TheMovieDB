@@ -1,0 +1,60 @@
+.cast-details-wrapper {
+  color: white;
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  width: 50%;
+  left: 13em;
+  top: 6em;
+  margin-bottom: 5em;
+}
+
+.cast-image-container {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 20em;
+  margin-right: 2em;
+  margin-bottom: 10em;
+  list-style-type: none;
+}
+
+.cast-details-title {
+  font-size: 2em;
+  color: white;
+  position: absolute;
+  left: 6.4em;
+}
+
+.cast-details-bottom {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  bottom: 1.6em;
+  height: 9em;
+  margin-bottom: 2em;
+}
+
+.cast-image {
+  height: 100%;
+}
+
+.cast-title {
+  color: black;
+  font-size: 1.4em;
+  margin-right: 0.7em;
+  position: relative;
+  left: 1em;
+  top: 1em;
+  font-weight: 900;
+}
+
+.cast-character {
+  color: black;
+  position: relative;
+  left: 1.1em;
+  font-weight: 500;
+  font-size: 1.3em;
+}

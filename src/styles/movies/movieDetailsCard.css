@@ -88,15 +88,6 @@ a {
   margin-bottom: 8em;
 }
 
-.cast-details-wrapper {
-  margin-top: 1em;
-}
-
-.movie-cast + .movie-cast::before {
-  white-space: pre;
-  content: ', ';
-}
-
 .movie-genres-list + .movie-genres-list::before {
   white-space: pre;
   content: ', ';
