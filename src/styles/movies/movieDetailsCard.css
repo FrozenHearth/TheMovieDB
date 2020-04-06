@@ -1,21 +1,20 @@
-.movie_poster {
-  width: 100%;
+.movie-poster-container {
+  position: relative;
+  left: 10em;
+  padding: 3em;
+}
+
+.movie-poster {
   height: 45em;
+  width: 30em;
+  border-radius: 5px;
   object-fit: cover;
 }
 
-.movie-details {
-  background: black;
-  color: white;
-  width: 100%;
-}
-
-.movie-details-wrapper {
-  display: flex;
-  align-items: center;
-  margin: 8em 0 0 0;
-  overscroll-behavior: none;
-  max-width: 100%;
+.movie-main-content {
+  position: relative;
+  top: 0;
+  left: 12em;
 }
 
 a {
@@ -32,6 +31,8 @@ a {
   display: flex;
   align-items: center;
   color: white;
+  position: relative;
+  bottom: 2em;
   font-weight: 600;
 }
 
@@ -42,8 +43,13 @@ a {
 }
 
 .movie-overview {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.movie-overview-content {
   line-height: 2em;
-  font-weight: 600;
+  font-weight: 500;
   color: rgb(194, 194, 194);
 }
 
@@ -51,18 +57,22 @@ a {
 .movie-category,
 .movie-genres,
 .movie-release-date,
-.movie-overview,
+.movie-overview-content,
 .movie-tagline,
 .movie-cast,
 .cast-details-title {
   font-size: 1.6em;
 }
 
+.movie-release-year {
+  font-size: 1em;
+  font-weight: 300;
+}
+
 .movie-tagline {
   font-style: italic;
-  font-weight: 600;
-  position: relative;
-  bottom: 1em;
+  font-weight: 400;
+  color: rgb(172, 172, 172);
 }
 
 .movie-overview-wrapper {
@@ -78,11 +88,7 @@ a {
   margin-bottom: 8em;
 }
 
-.cast-details-wrapper {
-  margin-top: 1em;
-}
-
-.movie-cast + .movie-cast::before {
+.movie-genres-list + .movie-genres-list::before {
   white-space: pre;
   content: ', ';
 }
