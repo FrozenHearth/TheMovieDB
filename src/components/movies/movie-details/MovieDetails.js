@@ -65,13 +65,11 @@ class MovieDetails extends Component {
     return (
       <>
         <Header />
-        <div className="movie-details-card-wrapper">
-          <MovieDetailsCard
-            credits={credits}
-            similarMovies={similarMovies}
-            details={movieDetails}
-          />
-        </div>
+        <MovieDetailsCard
+          credits={credits}
+          similarMovies={similarMovies}
+          details={movieDetails}
+        />
       </>
     );
   }
