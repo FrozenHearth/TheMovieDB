@@ -57,6 +57,8 @@ class MovieList extends Component {
             now.
           </h3>
         </div>
+        <h1 className="content-header">Popular Movies</h1>
+
         <div className="movie_card_container">
           <MovieCard
             popularMovies={popularMovies}

@@ -11,7 +11,7 @@
 }
 
 .hero-banner-container {
-  width: 80%;
+  width: 100%;
   margin: 3em auto 0 auto;
   height: 42em;
   background: rgb(108, 99, 255);
@@ -43,4 +43,11 @@
   bottom: 11.5em;
   left: 1.5em;
   font-size: 3em;
+}
+
+.content-header {
+  position: relative;
+  top: 1em;
+  left: 8em;
+  font-weight: 400;
 }
