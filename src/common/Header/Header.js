@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles';
 import SearchResults from './SearchResults';
 import '../../styles/header/header.css';
 import axios from 'axios';
 import { movieSearchURL } from '../../utils/apiURLs';
 import Debounce from 'react-debounce-component';
+import { AppBar, Toolbar, InputBase } from '@material-ui/core';
 
 const styles = {
   searchMoviesInputWrapper: {
-    display: 'flex',
-    justifyContent: 'center'
+    alignItems: 'center',
+    padding: '1em 0'
   },
   searchMoviesInput: {
-    width: '15em'
+    width: '12em'
   },
   searchIcon: {
     position: 'relative',
-    right: '1.5em',
-    color: 'grey'
+    color: 'white'
   }
 };
 
@@ -55,20 +54,23 @@ class Header extends Component {
     const { searchResults, searchTerm } = this.state;
     return (
       <>
-        <div className={classes.searchMoviesInputWrapper}>
-          <Input
-            autoComplete="off"
-            name="searchTerm"
-            value={searchTerm}
-            onChange={e => this.handleChange(e)}
-            className={classes.searchMoviesInput}
-            placeholder="Search Movies"
-            inputProps={{ 'aria-label': 'description' }}
-          />
-          <IconButton className={classes.searchIcon}>
-            <SearchIcon />
-          </IconButton>
-        </div>
+        <AppBar className={classes.searchMoviesInputWrapper} position="fixed">
+          <Toolbar>
+            <div className="search">
+              <InputBase
+                autoComplete="off"
+                name="searchTerm"
+                value={searchTerm}
+                onChange={e => this.handleChange(e)}
+                className={classes.searchMoviesInput}
+                placeholder="Search Movies"
+              />
+              <IconButton className={classes.searchIcon}>
+                <SearchIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
         {searchTerm !== '' ? (
           <Debounce ms={1000}>
             <SearchResults
