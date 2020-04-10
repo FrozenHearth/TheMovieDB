@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { imageURL } from '../../../utils/ImageURL';
 import { withStyles } from '@material-ui/core/styles';
@@ -13,16 +11,13 @@ import '../../../styles/movies/movieList.css';
 
 const styles = {
   movieCard: {
-    width: '33em',
-    margin: '1em auto 2em 2em',
-    background: '#1a1421',
-    color: 'white'
+    margin: '0 6em 7em 4em',
+    width: '20em',
+    position: 'relative',
+    left: '12em'
   },
-  movieSubtext: {
-    color: 'grey'
-  },
-  movieSummaryTitle: {
-    color: 'white'
+  movieTitle: {
+    fontSize: '1.5em'
   },
   viewDetails: {
     border: '1px solid red',
@@ -44,51 +39,34 @@ class MovieCard extends Component {
         {popularMovies
           ? popularMovies.map((movie, index) => (
               <Card className={classes.movieCard} key={index}>
-                <CardMedia>
-                  <img
-                    className="movie_poster"
-                    src={`${imageURL}${movie.poster_path}`}
-                    alt="movie_poster"
-                  />
-                </CardMedia>
-                <CardContent>
-                  <Typography variant="h5" component="h2">
-                    {movie.title}
-                  </Typography>
-                  <Typography
-                    className={classes.movieSubtext}
-                    variant="body1"
-                    gutterBottom
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {movie.adult === false ? 'Not Adult' : 'Adult'} /{' '}
-                    {movie.original_language} / {movie.vote_average}
-                  </Typography>
-                  <Typography
-                    className={classes.movieSummaryTitle}
-                    variant="body1"
-                    color="textSecondary"
-                    component="h5"
-                  >
-                    SUMMARY
-                  </Typography>
-                  <Typography
-                    className={classes.movieSubtext}
-                    variant="body1"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {trunc(movie.overview, 90)}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Link className={classes.btnLink} to={`${movie.id}`}>
-                    <Button className={classes.viewDetails} size="medium">
-                      View Details
-                    </Button>
-                  </Link>
-                </CardActions>
+                <Link className={classes.btnLink} to={`${movie.id}`}>
+                  <CardMedia>
+                    <img
+                      className="movie_poster"
+                      src={`${imageURL}${movie.poster_path}`}
+                      alt="movie_poster"
+                    />
+                  </CardMedia>
+                  <CardContent>
+                    <Typography
+                      className={classes.movieTitle}
+                      variant="h6"
+                      component="h2"
+                    >
+                      {trunc(movie.title, 30)}
+                    </Typography>
+                    <Typography
+                      className={classes.movieSubtext}
+                      variant="body1"
+                      gutterBottom
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {movie.adult === false ? 'Not Adult' : 'Adult'} /{' '}
+                      {movie.original_language} / {movie.vote_average}
+                    </Typography>
+                  </CardContent>
+                </Link>
               </Card>
             ))
           : ''}
