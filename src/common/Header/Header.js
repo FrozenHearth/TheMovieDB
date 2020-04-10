@@ -57,7 +57,8 @@ class Header extends Component {
   };
   resetSearchTerm = () => {
     this.setState({
-      searchTerm: ''
+      searchTerm: '',
+      searchResults: []
     });
   };
   render() {
