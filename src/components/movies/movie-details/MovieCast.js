@@ -35,7 +35,7 @@ const MovieCast = props => {
                 className="cast-image-container"
               >
                 {item.profile_path ? (
-                  <Link to={`/person/${item.id}`}>
+                  <Link to={`/people/${item.id}`}>
                     <img
                       className="cast-image"
                       src={`${smImageURL}${item.profile_path}`}
