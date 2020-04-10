@@ -14,18 +14,11 @@ import { imageURL } from '../../utils/ImageURL';
 const styles = {
   root: {
     width: '100%',
-    maxWidth: 360,
-    backgroundColor: '#101010',
+    maxWidth: 380,
     padding: 0,
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#3a3a3a'
-    }
+    color: '#000'
   },
 
-  divider: {
-    backgroundColor: 'rgba(255, 255, 255, 0.12)'
-  },
   movieLink: {
     textDecoration: 'none'
   }
@@ -33,11 +26,11 @@ const styles = {
 
 class SearchResults extends Component {
   state = {
-    closeSearchResults: false
+    closeSearchResults: true
   };
   closeSearchResults = () => {
     this.setState({
-      closeSearchResults: true
+      closeSearchResults: !this.state.closeSearchResults
     });
   };
   render() {
@@ -50,7 +43,7 @@ class SearchResults extends Component {
           searchTerm !== '' ? 'search-results-wrapper' : 'hide-search-results'
         }
       >
-        {searchResults && closeSearchResults === false
+        {searchResults && closeSearchResults
           ? searchResults.map((item, index) => (
               <Link key={index} className={classes.movieLink} to={`${item.id}`}>
                 <List
