@@ -1,5 +1,5 @@
 .Mui-focused {
-  width: 20.5em !important;
+  width: 17.5em !important;
 }
 
 .MuiInput-underline:after {
@@ -11,10 +11,19 @@
 }
 
 ::placeholder {
-  color: grey !important;
+  color: #fff !important;
+}
+
+.search {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.search:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 input {
-  caret-color: grey !important;
-  color: grey !important;
+  text-indent: 1em;
+  caret-color: white !important;
+  color: white !important;
 }
