@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+import CloseIcon from '@material-ui/icons/Close';
 import { withStyles } from '@material-ui/core/styles';
 import SearchResults from './SearchResults';
 import '../../styles/header/header.css';
@@ -12,13 +13,18 @@ import { AppBar, Toolbar, InputBase } from '@material-ui/core';
 const styles = {
   searchMoviesInputWrapper: {
     alignItems: 'center',
-    padding: '1em 0'
+    padding: '1em 0',
+    backgroundColor: 'rgb(149, 134, 247)'
   },
   searchMoviesInput: {
     width: '12em'
   },
   searchIcon: {
+    color: 'white'
+  },
+  closeIcon: {
     position: 'relative',
+    right: '0',
     color: 'white'
   }
 };
@@ -49,6 +55,11 @@ class Header extends Component {
       });
     }
   };
+  resetSearchTerm = () => {
+    this.setState({
+      searchTerm: ''
+    });
+  };
   render() {
     const { classes } = this.props;
     const { searchResults, searchTerm } = this.state;
@@ -61,24 +72,34 @@ class Header extends Component {
                 autoComplete="off"
                 name="searchTerm"
                 value={searchTerm}
-                onChange={e => this.handleChange(e)}
+                onChange={this.handleChange}
                 className={classes.searchMoviesInput}
                 placeholder="Search Movies"
               />
               <IconButton className={classes.searchIcon}>
                 <SearchIcon />
               </IconButton>
+              {searchTerm !== '' ? (
+                <IconButton
+                  onClick={this.resetSearchTerm}
+                  className={classes.closeIcon}
+                >
+                  <CloseIcon />
+                </IconButton>
+              ) : (
+                ''
+              )}
             </div>
           </Toolbar>
+          {searchResults.length !== 0 ? (
+            <Debounce ms={1000}>
+              <SearchResults
+                searchTerm={searchTerm}
+                searchResults={searchResults}
+              />
+            </Debounce>
+          ) : null}
         </AppBar>
-        {searchTerm !== '' ? (
-          <Debounce ms={1000}>
-            <SearchResults
-              searchTerm={searchTerm}
-              searchResults={searchResults}
-            />
-          </Debounce>
-        ) : null}
       </>
     );
   }
