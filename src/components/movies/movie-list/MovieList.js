@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../../../common/Header/Header';
-
 import axios from 'axios';
 import {
   popularMoviesURL,
@@ -8,6 +7,7 @@ import {
 } from '../../../utils/apiURLs';
 import '../../../styles/movies/movieList.css';
 import MovieCard from './MovieCard';
+import HeroBanner from '../../../assets/images/hero_banner.png';
 
 class MovieList extends Component {
   state = {
@@ -20,7 +20,7 @@ class MovieList extends Component {
         `${popularMoviesURL}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
       )
       .then(response => {
-        const results = [...response.data.results.slice(0, 9)];
+        const results = [...response.data.results.slice(0, 12)];
         this.setState({
           popularMovies: results
         });
@@ -49,6 +49,14 @@ class MovieList extends Component {
     return (
       <div className="movie-list-wrapper">
         <Header />
+        <div className="hero-banner-container">
+          <img className="hero-banner" src={HeroBanner} alt="Hero" />
+          <h2 className="hero-text-header">Welcome to TheMovieDB.</h2>
+          <h3 className="hero-subtext">
+            Thousands of English-language movies & people to discover. Explore
+            now.
+          </h3>
+        </div>
         <div className="movie_card_container">
           <MovieCard
             popularMovies={popularMovies}
