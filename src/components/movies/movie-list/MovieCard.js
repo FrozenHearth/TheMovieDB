@@ -7,6 +7,8 @@ import { imageURL } from '../../../utils/ImageURL';
 import { withStyles } from '@material-ui/core/styles';
 import { trunc } from '../../../utils/truncateString';
 import { Link } from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import '../../../styles/movies/movieList.css';
 
 const styles = {
@@ -17,7 +19,14 @@ const styles = {
     left: '12em'
   },
   movieTitle: {
-    fontSize: '1.5em'
+    fontSize: '1.6em',
+    position: 'relative',
+    bottom: '2em',
+    fontWeight: '900'
+  },
+  movieSubtext: {
+    position: 'relative',
+    bottom: '2em'
   },
   viewDetails: {
     border: '1px solid red',
@@ -27,6 +36,15 @@ const styles = {
   },
   btnLink: {
     textDecoration: 'none'
+  },
+  progressColorHigh: {
+    color: '#62d17b'
+  },
+  progressColorMedium: {
+    color: '#d3d632'
+  },
+  progressColorLow: {
+    color: '#dc4460'
   }
 };
 
@@ -48,12 +66,34 @@ class MovieCard extends Component {
                     />
                   </CardMedia>
                   <CardContent>
+                    <span className="percentage-circle-container">
+                      <span className="percentage-circle">
+                        <span className="percentage-text">
+                          {movie.vote_average * 10}{' '}
+                        </span>
+                        <span className="percentage">%</span>
+                      </span>
+                      <CircularProgress
+                        className={
+                          movie.vote_average * 10 >= 66
+                            ? `${classes.progressColorHigh}`
+                            : movie.vote_average * 10 > 33 &&
+                              movie.vote_average * 10 < 66
+                            ? `${classes.progressColorMedium}`
+                            : movie.vote_average * 10 < 33
+                            ? `${classes.progressColorLow}`
+                            : ``
+                        }
+                        variant="static"
+                        value={movie.vote_average * 10}
+                      />
+                    </span>
                     <Typography
                       className={classes.movieTitle}
                       variant="h6"
                       component="h2"
                     >
-                      {trunc(movie.title, 30)}
+                      {movie.title}
                     </Typography>
                     <Typography
                       className={classes.movieSubtext}
@@ -62,8 +102,7 @@ class MovieCard extends Component {
                       color="textSecondary"
                       component="p"
                     >
-                      {movie.adult === false ? 'Not Adult' : 'Adult'} /{' '}
-                      {movie.original_language} / {movie.vote_average}
+                      {movie.release_date}
                     </Typography>
                   </CardContent>
                 </Link>
