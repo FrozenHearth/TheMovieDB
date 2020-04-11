@@ -46,7 +46,6 @@ class MovieList extends Component {
   }
   render() {
     const { popularMovies, popularMoviesGenres } = this.state;
-    console.log(this.props);
     return (
       <div className="movie-list-wrapper">
         <Header {...this.props} />
