@@ -141,13 +141,12 @@ const MovieDetailsCard = props => {
             <Button className={classes.movieIMDBPage}> IMDb Link</Button>
           </a>
         </main>
-
-        {/* 
-        <div className="similar-movies">
-          <SimilarMovies similarMovies={similarMovies} />
-        </div> */}
       </div>
       <MovieCast credits={credits} />
+
+      {/* <div className="similar-movies">
+        <SimilarMovies similarMovies={similarMovies} />
+      </div> */}
     </>
   );
 };
