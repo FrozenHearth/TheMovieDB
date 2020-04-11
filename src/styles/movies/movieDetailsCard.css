@@ -81,8 +81,9 @@ a {
 }
 
 .similar-movies {
-  position: absolute;
+  position: relative;
   left: 0;
+  top: 5em;
   width: inherit;
   height: 20em;
   margin-bottom: 8em;

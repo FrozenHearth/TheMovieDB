@@ -1,27 +1,33 @@
 .similar-movies-wrapper {
   display: flex;
-  height: inherit;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  flex-wrap: nowrap;
+  width: 80%;
+  left: 13.2em;
+  margin-bottom: 5em;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .similar-movies-header {
-  position: absolute;
-  left: 0.8em;
+  font-size: 2em;
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+  left: 6.8em;
 }
 
 .similar-movies-poster-wrapper {
-  background: #0e0e0e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  list-style-type: none;
+  margin-bottom: 2em;
 }
 
 .similar-movies-poster {
   object-fit: cover;
-  width: 90%;
-  height: 50%;
+  border-radius: 4px;
+  width: 15em;
+  height: auto;
+  margin-right: 5em;
   opacity: 0.9;
 }
 
