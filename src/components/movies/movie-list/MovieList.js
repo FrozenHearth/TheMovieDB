@@ -46,9 +46,10 @@ class MovieList extends Component {
   }
   render() {
     const { popularMovies, popularMoviesGenres } = this.state;
+    console.log(this.props);
     return (
       <div className="movie-list-wrapper">
-        <Header />
+        <Header {...this.props} />
         <div className="hero-banner-container">
           <img className="hero-banner" src={HeroBanner} alt="Hero" />
           <h2 className="hero-text-header">Welcome to TheMovieDB.</h2>
