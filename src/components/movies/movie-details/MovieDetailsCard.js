@@ -1,6 +1,6 @@
 import React from 'react';
 import Rating from '@material-ui/lab/Rating';
-import { fullImage, imageURL, smImageURL } from '../../../utils/ImageURL';
+import { fullImage } from '../../../utils/ImageURL';
 import moment from 'moment';
 import Button from '@material-ui/core/Button';
 
@@ -57,6 +57,7 @@ const styles = {
 
 const MovieDetailsCard = props => {
   const { details, similarMovies, credits, classes } = props;
+  console.log(details);
 
   return (
     <>
@@ -68,7 +69,10 @@ const MovieDetailsCard = props => {
                 backgroundImage: `linear-gradient(to right, rgba(31, 31, 31, 0.8), rgba(72, 72, 72, 0.9)), 
         url(${fullImage}${details.backdrop_path})`
               }
-            : { backgroundImage: 'none' }
+            : {
+                backgroundImage: `linear-gradient(to right, rgba(31, 31, 31, 0.8), rgba(72, 72, 72, 0.9)), 
+        url(${fullImage}${details.poster_path})`
+              }
         }
       >
         <aside className="movie-poster-container">
@@ -144,9 +148,9 @@ const MovieDetailsCard = props => {
       </div>
       <MovieCast credits={credits} />
 
-      {/* <div className="similar-movies">
+      <div className="similar-movies">
         <SimilarMovies similarMovies={similarMovies} />
-      </div> */}
+      </div>
     </>
   );
 };

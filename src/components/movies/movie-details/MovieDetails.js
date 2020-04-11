@@ -31,7 +31,7 @@ class MovieDetails extends Component {
       )
       .then(res => {
         this.setState({
-          similarMovies: res.data.results.slice(0, 4)
+          similarMovies: res.data.results.slice(0, 10)
         });
       });
   };
