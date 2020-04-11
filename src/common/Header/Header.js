@@ -63,10 +63,21 @@ class Header extends Component {
   };
   render() {
     const { classes } = this.props;
+    const { path } = this.props.match;
     const { searchResults, searchTerm } = this.state;
     return (
       <>
-        <AppBar className={classes.searchMoviesInputWrapper} position="fixed">
+        <AppBar
+          style={
+            path === '/'
+              ? { backgroundColor: 'rgb(149, 134, 247)' }
+              : path === '/:id'
+              ? { backgroundColor: 'rgb(66,66,66)' }
+              : ''
+          }
+          className={classes.searchMoviesInputWrapper}
+          position="fixed"
+        >
           <Toolbar>
             <div className="search">
               <InputBase

@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../styles/movies/movieCast.css';
-import { smImageURL, imageURL } from '../../../utils/ImageURL';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import { smImageURL } from '../../../utils/ImageURL';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -20,7 +16,6 @@ const styles = {
 
 const MovieCast = props => {
   const { credits, classes } = props;
-  console.log(credits.cast);
   return (
     <>
       <h2 className="cast-details-title">Top Billed Cast </h2>

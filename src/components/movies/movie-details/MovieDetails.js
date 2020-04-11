@@ -64,7 +64,7 @@ class MovieDetails extends Component {
     const { movieDetails, similarMovies, credits } = this.state;
     return (
       <>
-        <Header />
+        <Header {...this.props} />
         <MovieDetailsCard
           credits={credits}
           similarMovies={similarMovies}
