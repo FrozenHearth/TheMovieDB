@@ -57,7 +57,6 @@ const styles = {
 
 const MovieDetailsCard = props => {
   const { details, similarMovies, credits, classes } = props;
-  console.log(details);
 
   return (
     <>
