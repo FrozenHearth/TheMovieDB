@@ -69,9 +69,9 @@ class Header extends Component {
       <>
         <AppBar
           style={
-            path !== '/:id'
+            path !== '/movie/:id'
               ? { backgroundColor: 'rgb(149, 134, 247)' }
-              : path === '/:id'
+              : path === `/movie/:id`
               ? { backgroundColor: 'rgb(66,66,66)' }
               : ''
           }

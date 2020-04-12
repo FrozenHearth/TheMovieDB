@@ -57,7 +57,7 @@ class MovieCard extends Component {
         {popularMovies
           ? popularMovies.map((movie, index) => (
               <Card className={classes.movieCard} key={index}>
-                <Link className={classes.btnLink} to={`${movie.id}`}>
+                <Link className={classes.btnLink} to={`/movie/${movie.id}`}>
                   <CardMedia>
                     <img
                       className="movie_poster"
