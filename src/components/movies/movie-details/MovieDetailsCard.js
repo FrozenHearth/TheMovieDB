@@ -8,6 +8,7 @@ import '../../../styles/movies/movieDetailsCard.css';
 import SimilarMovies from './SimilarMovies';
 import { withStyles } from '@material-ui/core/styles';
 import MovieCast from './MovieCast';
+import { CircularProgress } from '@material-ui/core';
 
 const styles = {
   movieDetailsContainer: {
@@ -52,6 +53,15 @@ const styles = {
   movieRating: {
     position: 'relative',
     bottom: '0.5em'
+  },
+  progressColorHigh: {
+    color: '#62d17b'
+  },
+  progressColorMedium: {
+    color: '#d3d632'
+  },
+  progressColorLow: {
+    color: '#dc4460'
   }
 };
 
@@ -113,14 +123,37 @@ const MovieDetailsCard = props => {
                 ))
               : ''}
           </div>
-          <Rating
+          <span className="percentage-circle-container-1">
+            <span className="percentage-circle-1">
+              <span className="percentage-text-1">
+                {details.vote_average * 10}{' '}
+              </span>
+              <span className="percentage-1">%</span>
+            </span>
+            <CircularProgress
+              size={60}
+              className={
+                details.vote_average * 10 >= 66
+                  ? `${classes.progressColorHigh}`
+                  : details.vote_average * 10 > 33 &&
+                    details.vote_average * 10 < 66
+                  ? `${classes.progressColorMedium}`
+                  : details.vote_average * 10 < 33
+                  ? `${classes.progressColorLow}`
+                  : ``
+              }
+              variant="static"
+              value={details.vote_average * 10}
+            />
+          </span>
+          {/* <Rating
             className={classes.movieRating}
             name="half-rating-read"
             readOnly
             value={details.vote_average ? parseFloat(details.vote_average) : 0}
             precision={0.5}
             max={10}
-          />
+          /> */}
           <div className="movie-tagline">{details.tagline || ''}</div>
           <div className="movie-overview-wrapper">
             <h2 className="movie-overview">Overview</h2>

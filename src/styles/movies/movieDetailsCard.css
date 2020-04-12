@@ -93,3 +93,42 @@ a {
   white-space: pre;
   content: ', ';
 }
+
+.percentage-circle-container-1 {
+  height: 6em;
+  width: 6em;
+  bottom: 1em;
+  position: relative;
+}
+
+.percentage-circle-container-1,
+.percentage-circle-1 {
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.percentage-circle-1 {
+  position: absolute;
+  left: 0.1em;
+  top: 0.1em;
+  height: 5.7em;
+  width: 5.7em;
+  background: #081d23;
+}
+
+.percentage-text-1 {
+  color: white;
+  font-weight: 600;
+  position: relative;
+  top: 0.8em;
+  left: 0.8em;
+  font-size: 2em;
+}
+
+.percentage-1 {
+  color: white;
+  font-size: 0.9em;
+  position: relative;
+  top: 0.8em;
+  left: 1.2em;
+}
