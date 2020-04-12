@@ -5,21 +5,6 @@ import { Link } from 'react-router-dom';
 
 const Main = props => {
   const { castDetails, moviesKnownFor } = props;
-  let biography;
-  if (castDetails.biography) {
-    biography = castDetails.biography.split('.').join(`<br />`);
-  }
-
-  const addLineBreaks = str => {
-    console.log(str);
-    str.split('.').map((text, index) => (
-      <Fragment>
-        {text}
-
-        <br />
-      </Fragment>
-    ));
-  };
 
   return (
     <div className="main-container">
