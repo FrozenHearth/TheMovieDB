@@ -26,7 +26,7 @@ const Main = props => {
                     className="movies-known-for-image-container"
                   >
                     {movie.poster_path ? (
-                      <Link to={`/${movie.id}`}>
+                      <Link to={`/movie/${movie.id}`}>
                         <img
                           className="movies-known-for-images"
                           src={`${smImageURL}${movie.poster_path}`}
