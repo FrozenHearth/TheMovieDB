@@ -25,22 +25,28 @@ const styles = {
 };
 
 class SearchResults extends Component {
-  state = {
-    closeSearchResults: true
-  };
-  closeSearchResults = () => {
-    this.setState({
-      closeSearchResults: !this.state.closeSearchResults
-    });
-  };
+  // state = {
+  //   closeSearchResults: true
+  // };
+  // closeSearchResults = () => {
+  //   this.setState({
+  //     closeSearchResults: !this.state.closeSearchResults
+  //   });
+  // };
   render() {
-    const { classes, searchResults, searchTerm } = this.props;
-    const { closeSearchResults } = this.state;
+    const {
+      classes,
+      searchResults,
+      searchTerm,
+      closeSearchResults
+    } = this.props;
 
     return (
       <div
         className={
-          searchTerm !== '' ? 'search-results-wrapper' : 'hide-search-results'
+          searchTerm !== '' && closeSearchResults === true
+            ? 'search-results-wrapper'
+            : 'hide-search-results'
         }
       >
         {searchResults && closeSearchResults
@@ -51,7 +57,7 @@ class SearchResults extends Component {
                 to={`/movie/${item.id}`}
               >
                 <List
-                  onClick={() => this.closeSearchResults()}
+                  onClick={() => this.props.closeSearchResultsDropdown()}
                   className={classes.root}
                   component="nav"
                   aria-label="mailbox folders"
