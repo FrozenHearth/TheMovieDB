@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Main = props => {
   const { castDetails, moviesKnownFor } = props;
+  console.log(moviesKnownFor);
 
   return (
     <div className="main-container">
@@ -16,28 +17,29 @@ const Main = props => {
         </p>
         <h1 className="main-content-title">Known For</h1>
         <div className="movies-known-for-container">
-          {moviesKnownFor
-            ? moviesKnownFor
-                .slice(0, 10)
-                .filter(el => el.poster_path !== null)
-                .map(movie => (
-                  <li
-                    key={movie.id}
-                    className="movies-known-for-image-container"
-                  >
-                    {movie.poster_path ? (
-                      <Link to={`/movie/${movie.id}`}>
-                        <img
-                          className="movies-known-for-images"
-                          src={`${smImageURL}${movie.poster_path}`}
-                          alt=""
-                        />
-                      </Link>
-                    ) : null}
-                    <p className="movies-known-for-title">{movie.title}</p>
-                  </li>
-                ))
-            : null}
+          {moviesKnownFor.length !== 0 ? (
+            moviesKnownFor
+              .slice(0, 10)
+              .filter(el => el.poster_path !== null)
+              .map(movie => (
+                <li key={movie.id} className="movies-known-for-image-container">
+                  {movie.poster_path ? (
+                    <Link to={`/movie/${movie.id}`}>
+                      <img
+                        className="movies-known-for-images"
+                        src={`${smImageURL}${movie.poster_path}`}
+                        alt=""
+                      />
+                    </Link>
+                  ) : null}
+                  <p className="movies-known-for-title">{movie.title}</p>
+                </li>
+              ))
+          ) : (
+            <p className="no-info-text">
+              Sorry. No info available for this person!
+            </p>
+          )}
         </div>
       </div>
     </div>
