@@ -45,7 +45,11 @@ class SearchResults extends Component {
       >
         {searchResults && closeSearchResults
           ? searchResults.map((item, index) => (
-              <Link key={index} className={classes.movieLink} to={`${item.id}`}>
+              <Link
+                key={index}
+                className={classes.movieLink}
+                to={`/movie/${item.id}`}
+              >
                 <List
                   onClick={() => this.closeSearchResults()}
                   className={classes.root}

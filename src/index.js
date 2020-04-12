@@ -12,7 +12,7 @@ render(
   <Router basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route exact path={`/`} component={App} />
-      <Route exact path={`/:id`} component={MovieDetails} />
+      <Route exact path={`/movie/:id`} component={MovieDetails} />
       <Route exact path={`/people/:id`} component={People} />
     </Switch>
   </Router>,
