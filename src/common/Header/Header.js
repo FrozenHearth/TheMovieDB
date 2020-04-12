@@ -32,7 +32,8 @@ const styles = {
 class Header extends Component {
   state = {
     searchTerm: '',
-    searchResults: []
+    searchResults: [],
+    closeSearchResults: true
   };
   handleChange = e => {
     const { searchTerm } = this.state;
@@ -61,10 +62,17 @@ class Header extends Component {
       searchResults: []
     });
   };
+  closeSearchResultsDropdown = () => {
+    this.setState({
+      closeSearchResults: !this.state.closeSearchResults,
+      searchTerm: '',
+      searchResults: []
+    });
+  };
   render() {
     const { classes } = this.props;
     const { path } = this.props.match;
-    const { searchResults, searchTerm } = this.state;
+    const { searchResults, searchTerm, closeSearchResults } = this.state;
     return (
       <>
         <AppBar
@@ -108,6 +116,8 @@ class Header extends Component {
               <SearchResults
                 searchTerm={searchTerm}
                 searchResults={searchResults}
+                closeSearchResultsDropdown={this.closeSearchResultsDropdown}
+                closeSearchResults={closeSearchResults}
               />
             </Debounce>
           ) : null}
