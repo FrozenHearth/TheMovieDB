@@ -8,6 +8,7 @@ import '../../styles/header/header.css';
 import axios from 'axios';
 import { movieSearchURL } from '../../utils/apiURLs';
 import Debounce from 'react-debounce-component';
+import Logo from '../../assets/images/tmdbLogo.svg';
 import { AppBar, Toolbar, InputBase } from '@material-ui/core';
 
 const styles = {
@@ -26,6 +27,9 @@ const styles = {
     position: 'relative',
     right: '0',
     color: 'white'
+  },
+  headerToolbar: {
+    width: '100%'
   }
 };
 
@@ -86,7 +90,15 @@ class Header extends Component {
           className={classes.searchMoviesInputWrapper}
           position="fixed"
         >
-          <Toolbar>
+          <Toolbar className={classes.headerToolbar}>
+            <img
+              onClick={() => this.props.history.push('/')}
+              className="brand-logo"
+              src={Logo}
+              alt=""
+              width={175}
+              height={75}
+            />
             <div className="search">
               <InputBase
                 autoComplete="off"
