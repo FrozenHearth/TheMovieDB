@@ -90,15 +90,8 @@ class Header extends Component {
           className={classes.searchMoviesInputWrapper}
           position="fixed"
         >
+          <img src={Logo} width={175} class="brand-logo" alt="" />
           <Toolbar className={classes.headerToolbar}>
-            <img
-              onClick={() => this.props.history.push('/')}
-              className="brand-logo"
-              src={Logo}
-              alt=""
-              width={175}
-              height={75}
-            />
             <div className="search">
               <InputBase
                 autoComplete="off"
@@ -121,18 +114,18 @@ class Header extends Component {
               ) : (
                 ''
               )}
+              {searchResults.length !== 0 ? (
+                <Debounce ms={1000}>
+                  <SearchResults
+                    searchTerm={searchTerm}
+                    searchResults={searchResults}
+                    closeSearchResultsDropdown={this.closeSearchResultsDropdown}
+                    closeSearchResults={closeSearchResults}
+                  />
+                </Debounce>
+              ) : null}
             </div>
           </Toolbar>
-          {searchResults.length !== 0 ? (
-            <Debounce ms={1000}>
-              <SearchResults
-                searchTerm={searchTerm}
-                searchResults={searchResults}
-                closeSearchResultsDropdown={this.closeSearchResultsDropdown}
-                closeSearchResults={closeSearchResults}
-              />
-            </Debounce>
-          ) : null}
         </AppBar>
       </>
     );

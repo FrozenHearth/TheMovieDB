@@ -3,8 +3,9 @@
 } */
 
 .brand-logo {
-  position: relative;
-  left: 11em;
+  position: absolute;
+  left: 13em;
+  top: 3em;
   cursor: pointer;
 }
 

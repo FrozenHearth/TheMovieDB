@@ -1,9 +1,8 @@
 .search-results-wrapper {
   width: 29em;
-  position: absolute;
+  position: fixed;
   height: 50em;
   z-index: 2;
-  right: 48em;
   top: 7em;
   overflow: auto;
   background-color: #fff;
