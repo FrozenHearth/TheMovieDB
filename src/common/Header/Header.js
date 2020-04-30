@@ -81,16 +81,22 @@ class Header extends Component {
       <>
         <AppBar
           style={
-            path !== '/movie/:id'
+            path === '/'
               ? { backgroundColor: 'rgb(149, 134, 247)' }
-              : path === `/movie/:id`
+              : path === `/movie/:id` || path === '/people/:id'
               ? { backgroundColor: 'rgb(66,66,66)' }
               : ''
           }
           className={classes.searchMoviesInputWrapper}
           position="fixed"
         >
-          <img src={Logo} width={175} class="brand-logo" alt="" />
+          <img
+            onClick={() => this.props.history.push('/')}
+            src={Logo}
+            width={175}
+            className="brand-logo"
+            alt=""
+          />
           <Toolbar className={classes.headerToolbar}>
             <div className="search">
               <InputBase
