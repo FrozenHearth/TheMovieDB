@@ -9,7 +9,7 @@ import axios from 'axios';
 import { movieSearchURL } from '../../utils/apiURLs';
 import Debounce from 'react-debounce-component';
 import Logo from '../../assets/images/tmdbLogo.svg';
-import { AppBar, Toolbar, InputBase } from '@material-ui/core';
+import { AppBar, Toolbar, InputBase, Typography } from '@material-ui/core';
 
 const styles = {
   searchMoviesInputWrapper: {
@@ -30,6 +30,17 @@ const styles = {
   },
   headerToolbar: {
     width: '100%'
+  },
+  navItemMovie: {
+    fontSize: '1.6em',
+    lineHeight: '24px',
+    fontWeight: '600',
+    marginRight: '2em'
+  },
+  navItemPeople: {
+    fontSize: '1.6em',
+    lineHeight: '24px',
+    fontWeight: '600'
   }
 };
 
@@ -73,6 +84,9 @@ class Header extends Component {
       searchResults: []
     });
   };
+  redirectToHomePage = () => {
+    this.props.history.push('/');
+  };
   render() {
     const { classes } = this.props;
     const { path } = this.props.match;
@@ -91,12 +105,21 @@ class Header extends Component {
           position="fixed"
         >
           <img
-            onClick={() => this.props.history.push('/')}
+            onClick={this.redirectToHomePage}
             src={Logo}
             width={175}
             className="brand-logo"
-            alt=""
+            alt="ss"
           />
+          <li className="nav-list">
+            <Typography variant="h6" className={classes.navItemMovie}>
+              Movies
+            </Typography>
+            <Typography variant="h6" className={classes.navItemPeople}>
+              People
+            </Typography>
+          </li>
+
           <Toolbar className={classes.headerToolbar}>
             <div className="search">
               <InputBase
