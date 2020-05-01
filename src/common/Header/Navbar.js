@@ -10,6 +10,13 @@ import { movieSearchURL } from '../../utils/apiURLs';
 import Debounce from 'react-debounce-component';
 import Logo from '../../assets/images/tmdbLogo.svg';
 import { AppBar, Toolbar, InputBase, Typography } from '@material-ui/core';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import PopupState, {
+  bindTrigger,
+  bindMenu,
+  bindHover
+} from 'material-ui-popup-state';
 
 const styles = {
   searchMoviesInputWrapper: {
@@ -32,19 +39,26 @@ const styles = {
     width: '100%'
   },
   navItemMovie: {
-    fontSize: '1.6em',
+    color: '#fff',
+    background: 'none',
+    outline: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    position: 'relative',
+    bottom: '0.4em',
+    fontSize: '0.8em',
     lineHeight: '24px',
-    fontWeight: '600',
+    fontWeight: 600,
     marginRight: '2em'
   },
   navItemPeople: {
     fontSize: '1.6em',
     lineHeight: '24px',
-    fontWeight: '600'
+    fontWeight: 600
   }
 };
 
-class Header extends Component {
+class Navbar extends Component {
   state = {
     searchTerm: '',
     searchResults: [],
@@ -87,6 +101,7 @@ class Header extends Component {
   redirectToHomePage = () => {
     this.props.history.push('/');
   };
+
   render() {
     const { classes } = this.props;
     const { path } = this.props.match;
@@ -97,7 +112,10 @@ class Header extends Component {
           style={
             path === '/'
               ? { backgroundColor: 'rgb(149, 134, 247)' }
-              : path === `/movie/:id` || path === '/people/:id'
+              : path === `/movie/:id` ||
+                path === '/people/:id' ||
+                path === '/movies' ||
+                path === '/popular'
               ? { backgroundColor: 'rgb(66,66,66)' }
               : ''
           }
@@ -112,10 +130,35 @@ class Header extends Component {
             alt="ss"
           />
           <li className="nav-list">
-            <Typography variant="h6" className={classes.navItemMovie}>
-              Movies
-            </Typography>
-            <Typography variant="h6" className={classes.navItemPeople}>
+            <PopupState variant="popover" popupId="demo-popup-menu">
+              {popupState => (
+                <React.Fragment>
+                  <Typography variant="h6">
+                    <button
+                      className={classes.navItemMovie}
+                      {...bindHover(popupState)}
+                    >
+                      {' '}
+                      Movies
+                    </button>
+                  </Typography>
+                  <Menu style={{ top: '4em' }} {...bindMenu(popupState)}>
+                    <MenuItem
+                      onClick={() => this.props.history.push('/popular')}
+                    >
+                      Popular
+                    </MenuItem>
+                    <MenuItem onClick={popupState.close}>Now Playing</MenuItem>
+                    <MenuItem onClick={popupState.close}>Upcoming</MenuItem>
+                  </Menu>
+                </React.Fragment>
+              )}
+            </PopupState>
+            <Typography
+              onClick={this.redirectToPeople}
+              variant="h6"
+              className={classes.navItemPeople}
+            >
               People
             </Typography>
           </li>
@@ -161,4 +204,4 @@ class Header extends Component {
   }
 }
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(Navbar);

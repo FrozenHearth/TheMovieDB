@@ -25,14 +25,6 @@ const styles = {
 };
 
 class SearchResults extends Component {
-  // state = {
-  //   closeSearchResults: true
-  // };
-  // closeSearchResults = () => {
-  //   this.setState({
-  //     closeSearchResults: !this.state.closeSearchResults
-  //   });
-  // };
   render() {
     const {
       classes,

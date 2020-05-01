@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { movieURL } from '../../../utils/apiURLs';
 import axios from 'axios';
 import MovieDetailsCard from './MovieDetailsCard';
-import Header from '../../../common/Header/Header';
+import Navbar from '../../../common/Header/Navbar';
 
 class MovieDetails extends Component {
   state = {
@@ -64,7 +64,7 @@ class MovieDetails extends Component {
     const { movieDetails, similarMovies, credits } = this.state;
     return (
       <>
-        <Header {...this.props} />
+        <Navbar {...this.props} />
         <MovieDetailsCard
           credits={credits}
           similarMovies={similarMovies}
