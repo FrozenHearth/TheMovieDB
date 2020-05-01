@@ -3,13 +3,12 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { imageURL } from '../../../utils/ImageURL';
 import { withStyles } from '@material-ui/core/styles';
-import { trunc } from '../../../utils/truncateString';
 import { Link } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import '../../../styles/movies/movieList.css';
+import '../../styles/movies/movieCard.css';
+import { imageURL } from '../../utils/ImageURL';
 
 const styles = {
   movieCard: {
@@ -60,9 +59,9 @@ class MovieCard extends Component {
                 <Link className={classes.btnLink} to={`/movie/${movie.id}`}>
                   <CardMedia>
                     <img
-                      className="movie_poster"
+                      className="movie-poster-x"
                       src={`${imageURL}${movie.poster_path}`}
-                      alt="movie_poster"
+                      alt="Movie poster"
                     />
                   </CardMedia>
                   <CardContent>

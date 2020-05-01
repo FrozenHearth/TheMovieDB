@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import Header from '../../../common/Header/Header';
+import Navbar from '../../common/Header/Navbar';
+import HeroBanner from '../../assets/images/hero_banner.png';
+import '../../styles/home/landing.css';
+import MovieCard from '../../common/MovieCard/MovieCard';
 import axios from 'axios';
-import {
-  popularMoviesURL,
-  popularMoviesGenresURL
-} from '../../../utils/apiURLs';
-import '../../../styles/movies/movieList.css';
-import MovieCard from './MovieCard';
-import HeroBanner from '../../../assets/images/hero_banner.png';
+import { popularMoviesURL, popularMoviesGenresURL } from '../../utils/apiURLs';
 
-class MovieList extends Component {
+export default class LandingPage extends Component {
   state = {
     popularMovies: [],
     popularMoviesGenres: []
@@ -46,28 +43,29 @@ class MovieList extends Component {
   }
   render() {
     const { popularMovies, popularMoviesGenres } = this.state;
-    return (
-      <div className="movie-list-wrapper">
-        <Header {...this.props} />
-        <div className="hero-banner-container">
-          <img className="hero-banner" src={HeroBanner} alt="Hero" />
-          <h2 className="hero-text-header">Welcome to TheMovieDB.</h2>
-          <h3 className="hero-subtext">
-            Thousands of English-language movies & people to discover. Explore
-            now.
-          </h3>
-        </div>
-        <h1 className="content-header">Popular Movies</h1>
 
-        <div className="movie_card_container">
+    return (
+      <>
+        <div className="homepage-wrapper">
+          <Navbar {...this.state} {...this.props} />
+          <div className="hero-container">
+            <img className="hero-banner" src={HeroBanner} alt="Hero" />
+            <h2 className="hero-text-header">Welcome to TheMovieDB.</h2>
+            <h3 className="hero-subtext">
+              Thousands of English-language movies & people to discover. Explore
+              now.
+            </h3>
+          </div>
+        </div>
+
+        <h1 className="content-header">What's Trending</h1>
+        <div className="movie-card-container">
           <MovieCard
             popularMovies={popularMovies}
             popularMoviesGenres={popularMoviesGenres}
           />
         </div>
-      </div>
+      </>
     );
   }
 }
-
-export default MovieList;

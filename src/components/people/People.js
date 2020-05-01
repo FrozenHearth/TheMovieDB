@@ -4,7 +4,7 @@ import { castURL } from '../../utils/apiURLs';
 import '../../styles/people/people.css';
 import Sidebar from './peopleDetailsSidebar';
 import Main from './Main';
-import Header from '../../common/Header/Header';
+import Navbar from '../../common/Header/Navbar';
 
 class People extends Component {
   state = {
@@ -45,7 +45,7 @@ class People extends Component {
       <div className="person-details-container">
         {castDetails ? (
           <>
-            <Header {...this.props} />
+            <Navbar {...this.props} />
             <Sidebar castDetails={castDetails} />
             <Main castDetails={castDetails} moviesKnownFor={moviesKnownFor} />
           </>
