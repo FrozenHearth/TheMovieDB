@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
+    "material-ui-popup-state": "^1.5.4",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-debounce-component": "^1.0.0",
