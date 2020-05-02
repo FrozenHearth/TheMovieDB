@@ -1,7 +1,7 @@
 import React from 'react';
-import Rating from '@material-ui/lab/Rating';
+// import Rating from '@material-ui/lab/Rating';
 import { fullImage } from '../../../utils/ImageURL';
-import moment from 'moment';
+// import moment from 'moment';
 import Button from '@material-ui/core/Button';
 
 import '../../../styles/movies/movieDetailsCard.css';
@@ -96,15 +96,15 @@ const MovieDetailsCard = props => {
         <main className="movie-main-content">
           <h2 className="movie-title">
             {details.title}{' '}
-            <span className="movie-release-year">
+            {/* <span className="movie-release-year">
               ({moment(details.release_date).format('YYYY')})
-            </span>
+            </span> */}
           </h2>
 
           <div className="subtitles-container">
-            <span className="movie-release-date">
+            {/* <span className="movie-release-date">
               {moment(details.release_date).format('DD/MM/YYYY')}
-            </span>
+            </span> */}
             <span className="vertical-divider"></span>
             <span className="movie-runtime">{details.runtime} mins</span>
 

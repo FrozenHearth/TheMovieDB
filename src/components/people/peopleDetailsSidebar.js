@@ -1,6 +1,6 @@
 import React from 'react';
 import { smImageURL } from '../../utils/ImageURL';
-import moment from 'moment';
+// import moment from 'moment';
 import '../../styles/people/sidebar.css';
 
 const Sidebar = props => {
@@ -26,7 +26,7 @@ const Sidebar = props => {
         </p>
         <h1 className="inner-content-header">Birthday </h1>
         <p className="inner-content-subtitle">
-          {moment(castDetails.birthday).format('DD/MM/YYYY')}
+          {/* {moment(castDetails.birthday).format('DD/MM/YYYY')} */}
         </p>
         <h1 className="inner-content-header">Place Of Birth </h1>
         <p className="inner-content-subtitle">{castDetails.place_of_birth}</p>

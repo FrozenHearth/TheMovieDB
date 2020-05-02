@@ -94,7 +94,7 @@ class MovieCard extends Component {
                     >
                       {movie.title}
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       className={classes.movieSubtext}
                       variant="body1"
                       gutterBottom
@@ -102,7 +102,7 @@ class MovieCard extends Component {
                       component="p"
                     >
                       {movie.release_date}
-                    </Typography>
+                    </Typography> */}
                   </CardContent>
                 </Link>
               </Card>
