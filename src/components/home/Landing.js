@@ -3,43 +3,31 @@ import Navbar from '../../common/Header/Navbar';
 import HeroBanner from '../../assets/images/hero_banner.png';
 import '../../styles/home/landing.css';
 import MovieCard from '../../common/MovieCard/MovieCard';
-import axios from 'axios';
-import { popularMoviesURL, popularMoviesGenresURL } from '../../utils/apiURLs';
 
-export default class LandingPage extends Component {
+import {
+  actionGetPopularMovies,
+  actionGetGenresForPopularMovies
+} from '../../redux/actions/popularMovies/action';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+class LandingPage extends Component {
   state = {
     popularMovies: [],
     popularMoviesGenres: []
   };
-  getPopularMovies = () => {
-    axios
-      .get(
-        `${popularMoviesURL}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
-      )
-      .then(response => {
-        const results = [...response.data.results.slice(0, 12)];
-        this.setState({
-          popularMovies: results
-        });
-      });
-  };
-
-  getGenresForPopularMovies = () => {
-    axios
-      .get(
-        `${popularMoviesGenresURL}api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-      )
-      .then(res => {
-        const { genres } = res.data;
-        this.setState({
-          popularMoviesGenres: genres
-        });
-      });
-  };
 
   componentDidMount() {
-    this.getPopularMovies();
-    this.getGenresForPopularMovies();
+    this.props.actionGetPopularMovies().then(res => {
+      this.setState({
+        popularMovies: res.results.slice(0, 12)
+      });
+    });
+    this.props.actionGetGenresForPopularMovies().then(genres => {
+      this.setState({
+        popularMoviesGenres: genres
+      });
+    });
   }
   render() {
     const { popularMovies, popularMoviesGenres } = this.state;
@@ -69,3 +57,21 @@ export default class LandingPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    popularMovies: state.popularMovies.data
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      actionGetPopularMovies,
+      actionGetGenresForPopularMovies
+    },
+    dispatch
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

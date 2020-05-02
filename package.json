@@ -13,14 +13,16 @@
     "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
     "material-ui-popup-state": "^1.5.4",
-    "moment": "^2.25.1",
+    "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-debounce-component": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
   "homepage": "https://frozenhearth.github.io/TheMovieDB",
   "scripts": {
