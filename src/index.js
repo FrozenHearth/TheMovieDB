@@ -9,7 +9,7 @@ import MovieDetails from './components/movies/MovieDetails/MovieDetails';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import People from './components/people/People';
 import ScrollIntoView from './components/utils/ScrollIntoView';
-import { PopularMovies } from './components/movies/Popular/PopularMovies';
+import PopularMovies from './components/movies/Popular/PopularMovies';
 
 const rootElement = document.getElementById('root');
 
