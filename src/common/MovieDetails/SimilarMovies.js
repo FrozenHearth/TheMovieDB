@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../../../styles/movies/similarMovies.css';
-import { imageURL, fullImage } from '../../../utils/ImageURL';
+import '../../styles/movies/similarMovies.css';
 import { withRouter } from 'react-router-dom';
+import { fullImage } from '../../utils/ImageURL';
 
 export class SimilarMovies extends Component {
   openMovieInNewTab = id => {

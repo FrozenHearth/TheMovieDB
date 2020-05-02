@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { movieURL } from '../../../utils/apiURLs';
-import axios from 'axios';
 import MovieDetailsCard from './MovieDetailsCard';
-import Navbar from '../../../common/Header/Navbar';
+import Navbar from '../Header/Navbar';
+import {
+  actionGetMovieDetails,
+  actionGetMovieCredits,
+  actionGetSimilarMovies
+} from '../../redux/actions/movieDetails/action';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 class MovieDetails extends Component {
   state = {
@@ -12,52 +17,43 @@ class MovieDetails extends Component {
   };
   getMovieDetails = () => {
     const { id } = this.props.match.params;
-    axios
-      .get(
-        `${movieURL}${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-      )
-      .then(res => {
-        this.setState({
-          movieDetails: res.data
-        });
+    this.props.actionGetMovieDetails(id).then(details => {
+      this.setState({
+        movieDetails: details
       });
+    });
   };
   getSimilarMovies = () => {
     const { id } = this.props.match.params;
 
-    axios
-      .get(
-        `${movieURL}${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
-      )
-      .then(res => {
-        this.setState({
-          similarMovies: res.data.results.slice(0, 10)
-        });
+    this.props.actionGetSimilarMovies(id).then(res => {
+      this.setState({
+        similarMovies: res.results.slice(0, 10)
       });
+    });
   };
   getMovieCredits = () => {
     const { id } = this.props.match.params;
 
-    axios
-      .get(`${movieURL}${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`)
-      .then(res => {
-        this.setState({
-          credits: res.data
-        });
+    this.props.actionGetMovieCredits(id).then(credits => {
+      this.setState({
+        credits
       });
+    });
   };
-  componentDidMount() {
+  getData = () => {
     this.getMovieDetails();
     this.getSimilarMovies();
     this.getMovieCredits();
+  };
+  componentDidMount() {
+    this.getData();
   }
 
   componentDidUpdate(prevProps) {
     // If route changes, re-render the component
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.getMovieDetails();
-      this.getSimilarMovies();
-      this.getMovieCredits();
+      this.getData();
     }
   }
   render() {
@@ -75,4 +71,15 @@ class MovieDetails extends Component {
   }
 }
 
-export default MovieDetails;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      actionGetMovieDetails,
+      actionGetMovieCredits,
+      actionGetSimilarMovies
+    },
+    dispatch
+  );
+};
+
+export default connect(null, mapDispatchToProps)(MovieDetails);

@@ -1,14 +1,14 @@
 import React from 'react';
 // import Rating from '@material-ui/lab/Rating';
-import { fullImage } from '../../../utils/ImageURL';
 // import moment from 'moment';
 import Button from '@material-ui/core/Button';
 
-import '../../../styles/movies/movieDetailsCard.css';
+import '../../styles/movies/movieDetailsCard.css';
 import SimilarMovies from './SimilarMovies';
 import { withStyles } from '@material-ui/core/styles';
 import MovieCast from './MovieCast';
 import { CircularProgress } from '@material-ui/core';
+import { fullImage } from '../../utils/ImageURL';
 
 const styles = {
   movieDetailsContainer: {
