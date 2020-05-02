@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/movies/movieCast.css';
-import { smImageURL } from '../../../utils/ImageURL';
+import '../../styles/movies/movieCast.css';
 import { withStyles } from '@material-ui/core/styles';
+import { smImageURL } from '../../utils/ImageURL';
 
 const styles = {
   personCard: {

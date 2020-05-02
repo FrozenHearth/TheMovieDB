@@ -17,6 +17,14 @@ const styles = {
     position: 'relative',
     left: '12em'
   },
+  popularMoviesCard: {
+    margin: '0 0 3em 4em',
+    width: '20em',
+    position: 'relative',
+    left: '12em',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px'
+  },
   movieTitle: {
     fontSize: '1.6em',
     position: 'relative',
@@ -48,14 +56,39 @@ const styles = {
 };
 
 class MovieCard extends Component {
+  state = {
+    activePath: ''
+  };
+
+  componentDidMount() {
+    const { location } = this.props;
+    if (location) {
+      this.setState({
+        activePath: location.pathname
+      });
+    }
+  }
   render() {
     const { popularMovies, classes } = this.props;
+
+    const { activePath } = this.state;
+
+    console.log(activePath);
 
     return (
       <>
         {popularMovies
           ? popularMovies.map((movie, index) => (
-              <Card className={classes.movieCard} key={index}>
+              <Card
+                className={
+                  activePath === '/popular'
+                    ? `${classes.popularMoviesCard}`
+                    : activePath === '/'
+                    ? `${classes.movieCard}`
+                    : ''
+                }
+                key={index}
+              >
                 <Link className={classes.btnLink} to={`/movie/${movie.id}`}>
                   <CardMedia>
                     <img

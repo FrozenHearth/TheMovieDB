@@ -49,6 +49,7 @@ class LandingPage extends Component {
         <h1 className="content-header">What's Trending</h1>
         <div className="movie-card-container">
           <MovieCard
+            {...this.props}
             popularMovies={popularMovies}
             popularMoviesGenres={popularMoviesGenres}
           />
@@ -57,12 +58,6 @@ class LandingPage extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    popularMovies: state.popularMovies.data
-  };
-};
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
@@ -74,4 +69,4 @@ const mapDispatchToProps = dispatch => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+export default connect(null, mapDispatchToProps)(LandingPage);

@@ -5,11 +5,11 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-import MovieDetails from './components/movies/MovieDetails/MovieDetails';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import People from './components/people/People';
-import ScrollIntoView from './components/utils/ScrollIntoView';
-import { PopularMovies } from './components/movies/Popular/PopularMovies';
+import ScrollIntoView from './common/utils/ScrollIntoView';
+import PopularMovies from './components/movies/Popular/PopularMovies';
+import MovieDetails from './common/MovieDetails/MovieDetails';
 
 const rootElement = document.getElementById('root');
 
