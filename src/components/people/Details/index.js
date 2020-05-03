@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { castURL } from '../../utils/apiURLs';
-import '../../styles/people/people.css';
-import Sidebar from './peopleDetailsSidebar';
-import Main from './Main';
-import Navbar from '../../common/Header/Navbar';
+import { castURL } from '../../../utils/apiURLs';
+import '../../../styles/people/details/index.css';
+import Sidebar from './DetailsSidebar';
+import Main from './DetailsMain';
+import Navbar from '../../../common/Header/Navbar';
 
-class People extends Component {
+class PersonDetails extends Component {
   state = {
     castDetails: {},
     moviesKnownFor: []
@@ -55,4 +55,4 @@ class People extends Component {
   }
 }
 
-export default People;
+export default PersonDetails;

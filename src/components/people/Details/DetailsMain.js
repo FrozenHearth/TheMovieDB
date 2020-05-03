@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react';
-import { smImageURL } from '../../utils/ImageURL';
-import '.././../styles/people/mainDetails.css';
+import React from 'react';
+import { smImageURL } from '../../../utils/ImageURL';
+import '.././../../styles/people/details/detailsMain.css';
 import { Link } from 'react-router-dom';
 
 const Main = props => {
   const { castDetails, moviesKnownFor } = props;
-  console.log(moviesKnownFor);
 
   return (
     <div className="main-container">

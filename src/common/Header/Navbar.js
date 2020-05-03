@@ -52,7 +52,14 @@ const styles = {
     marginRight: '2em'
   },
   navItemPeople: {
-    fontSize: '1.6em',
+    color: '#fff',
+    background: 'none',
+    outline: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    position: 'relative',
+    bottom: '0.4em',
+    fontSize: '0.8em',
     lineHeight: '24px',
     fontWeight: 600
   }
@@ -115,7 +122,8 @@ class Navbar extends Component {
               : path === `/movie/:id` ||
                 path === '/people/:id' ||
                 path === '/movies' ||
-                path === '/popular'
+                path === '/popular' ||
+                path === '/people'
               ? { backgroundColor: 'rgb(66,66,66)' }
               : ''
           }
@@ -130,37 +138,56 @@ class Navbar extends Component {
             alt="ss"
           />
           <li className="nav-list">
-            <PopupState variant="popover" popupId="demo-popup-menu">
-              {popupState => (
-                <React.Fragment>
-                  <Typography variant="h6">
-                    <button
-                      className={classes.navItemMovie}
-                      {...bindHover(popupState)}
-                    >
-                      {' '}
-                      Movies
-                    </button>
-                  </Typography>
-                  <Menu style={{ top: '4em' }} {...bindMenu(popupState)}>
-                    <MenuItem
-                      onClick={() => this.props.history.push('/popular')}
-                    >
-                      Popular
-                    </MenuItem>
-                    <MenuItem onClick={popupState.close}>Now Playing</MenuItem>
-                    <MenuItem onClick={popupState.close}>Upcoming</MenuItem>
-                  </Menu>
-                </React.Fragment>
-              )}
-            </PopupState>
-            <Typography
-              onClick={this.redirectToPeople}
-              variant="h6"
-              className={classes.navItemPeople}
-            >
-              People
-            </Typography>
+            <>
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {popupState => (
+                  <React.Fragment>
+                    <Typography variant="h6">
+                      <button
+                        className={classes.navItemMovie}
+                        {...bindHover(popupState)}
+                      >
+                        {' '}
+                        Movies
+                      </button>
+                    </Typography>
+                    <Menu style={{ top: '4em' }} {...bindMenu(popupState)}>
+                      <MenuItem
+                        onClick={() => this.props.history.push('/popular')}
+                      >
+                        Popular
+                      </MenuItem>
+                      <MenuItem onClick={popupState.close}>
+                        Now Playing
+                      </MenuItem>
+                      <MenuItem onClick={popupState.close}>Upcoming</MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {popupState => (
+                  <React.Fragment>
+                    <Typography variant="h6">
+                      <button
+                        {...bindHover(popupState)}
+                        className={classes.navItemPeople}
+                      >
+                        {' '}
+                        People
+                      </button>
+                    </Typography>
+                    <Menu style={{ top: '4em' }} {...bindMenu(popupState)}>
+                      <MenuItem
+                        onClick={() => this.props.history.push('/people')}
+                      >
+                        Popular People
+                      </MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
+            </>
           </li>
 
           <Toolbar className={classes.headerToolbar}>
