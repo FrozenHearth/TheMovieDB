@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import People from './components/people/People';
+import PersonDetails from './components/people/Details/index';
 import ScrollIntoView from './common/utils/ScrollIntoView';
 import PopularMovies from './components/movies/Popular/PopularMovies';
 import MovieDetails from './common/MovieDetails/MovieDetails';
+import PersonsList from './components/people/List/index';
 
 const rootElement = document.getElementById('root');
 
@@ -20,7 +21,8 @@ render(
         <Switch>
           <Route exact path={`/`} component={App} />
           <Route exact path={`/movie/:id`} component={MovieDetails} />
-          <Route exact path={`/people/:id`} component={People} />
+          <Route exact path={`/people/:id`} component={PersonDetails} />
+          <Route exact path={`/people`} component={PersonsList} />
           <Route exact path={`/popular`} component={PopularMovies} />
         </Switch>
       </ScrollIntoView>

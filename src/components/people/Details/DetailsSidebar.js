@@ -1,7 +1,7 @@
 import React from 'react';
-import { smImageURL } from '../../utils/ImageURL';
+import { smImageURL } from '../../../utils/ImageURL';
 // import moment from 'moment';
-import '../../styles/people/sidebar.css';
+import '../../../styles/people/details/detailsSidebar.css';
 
 const Sidebar = props => {
   const { castDetails } = props;
