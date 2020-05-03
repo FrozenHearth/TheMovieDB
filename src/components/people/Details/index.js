@@ -29,8 +29,8 @@ class PersonDetails extends Component {
                 )
                 .then(res =>
                   this.setState({
-                    moviesKnownFor: res.data.cast.filter(
-                      el => el.vote_average > 7.5
+                    moviesKnownFor: res.data.cast.sort((a, b) =>
+                      a.title.localeCompare(b.title)
                     )
                   })
                 );

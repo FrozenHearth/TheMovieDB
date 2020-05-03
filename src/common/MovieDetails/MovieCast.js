@@ -15,13 +15,13 @@ const styles = {
 };
 
 const MovieCast = props => {
-  const { credits, classes } = props;
+  const { credits } = props;
   return (
     <>
       <h2 className="cast-details-title">Top Billed Cast </h2>
       <div className="cast-details-wrapper">
         {credits.cast
-          ? credits.cast.slice(0, 8).map((item, index) => (
+          ? credits.cast.slice(0, 8).map(item => (
               <li
                 style={
                   item.profile_path ? { display: 'block' } : { display: 'none' }
