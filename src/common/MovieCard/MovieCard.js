@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import moment from 'moment';
 
 import '../../styles/movies/movieCard.css';
 import { imageURL } from '../../utils/ImageURL';
@@ -52,6 +53,9 @@ const styles = {
   },
   progressColorLow: {
     color: '#dc4460'
+  },
+  cardContent: {
+    padding: '16px 16px 0px 16px !important'
   }
 };
 
@@ -72,8 +76,6 @@ class MovieCard extends Component {
     const { popularMovies, classes } = this.props;
 
     const { activePath } = this.state;
-
-    console.log(activePath);
 
     return (
       <>
@@ -97,7 +99,7 @@ class MovieCard extends Component {
                       alt="Movie poster"
                     />
                   </CardMedia>
-                  <CardContent>
+                  <CardContent className={classes.cardContent}>
                     <span className="percentage-circle-container">
                       <span className="percentage-circle">
                         <span className="percentage-text">
@@ -127,15 +129,15 @@ class MovieCard extends Component {
                     >
                       {movie.title}
                     </Typography>
-                    {/* <Typography
+                    <Typography
                       className={classes.movieSubtext}
                       variant="body1"
                       gutterBottom
                       color="textSecondary"
                       component="p"
                     >
-                      {movie.release_date}
-                    </Typography> */}
+                      {moment(movie.release_date).format('LL')}
+                    </Typography>
                   </CardContent>
                 </Link>
               </Card>
