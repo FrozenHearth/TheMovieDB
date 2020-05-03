@@ -17,7 +17,7 @@ class PopularMovies extends Component {
     this.props.actionGetPopularMovies().then(res => {
       const { results } = res;
       this.setState({
-        popularMovies: [...results.slice(0, 12)]
+        popularMovies: [...results.slice(0, 15)]
       });
     });
     this.props.actionGetGenresForPopularMovies().then(genres => {

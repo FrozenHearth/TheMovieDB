@@ -5,10 +5,10 @@
 }
 
 .popular-movies-card-container {
-  width: 96em;
+  width: 120em;
   display: flex;
   flex-wrap: wrap;
-  margin: 1em auto 2em auto;
+  margin: 4em auto 2em -3em;
 }
 
 .movie-poster-x {
