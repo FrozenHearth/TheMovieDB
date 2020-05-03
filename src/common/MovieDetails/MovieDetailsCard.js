@@ -1,6 +1,5 @@
 import React from 'react';
-// import Rating from '@material-ui/lab/Rating';
-// import moment from 'moment';
+import moment from 'moment';
 import Button from '@material-ui/core/Button';
 
 import '../../styles/movies/movieDetailsCard.css';
@@ -68,6 +67,8 @@ const styles = {
 const MovieDetailsCard = props => {
   const { details, similarMovies, credits, classes } = props;
 
+  console.log(details);
+
   return (
     <>
       <div
@@ -96,15 +97,15 @@ const MovieDetailsCard = props => {
         <main className="movie-main-content">
           <h2 className="movie-title">
             {details.title}{' '}
-            {/* <span className="movie-release-year">
+            <span className="movie-release-year">
               ({moment(details.release_date).format('YYYY')})
-            </span> */}
+            </span>
           </h2>
 
           <div className="subtitles-container">
-            {/* <span className="movie-release-date">
+            <span className="movie-release-date">
               {moment(details.release_date).format('DD/MM/YYYY')}
-            </span> */}
+            </span>
             <span className="vertical-divider"></span>
             <span className="movie-runtime">{details.runtime} mins</span>
 
@@ -146,14 +147,7 @@ const MovieDetailsCard = props => {
               value={details.vote_average * 10}
             />
           </span>
-          {/* <Rating
-            className={classes.movieRating}
-            name="half-rating-read"
-            readOnly
-            value={details.vote_average ? parseFloat(details.vote_average) : 0}
-            precision={0.5}
-            max={10}
-          /> */}
+
           <div className="movie-tagline">{details.tagline || ''}</div>
           <div className="movie-overview-wrapper">
             <h2 className="movie-overview">Overview</h2>

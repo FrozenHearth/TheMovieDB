@@ -10,6 +10,7 @@ import moment from 'moment';
 
 import '../../styles/movies/movieCard.css';
 import { imageURL } from '../../utils/ImageURL';
+import { trunc } from '../../utils/truncateString';
 
 const styles = {
   movieCard: {
@@ -127,7 +128,7 @@ class MovieCard extends Component {
                       variant="h6"
                       component="h2"
                     >
-                      {movie.title}
+                      {trunc(movie.title, 30)}
                     </Typography>
                     <Typography
                       className={classes.movieSubtext}
