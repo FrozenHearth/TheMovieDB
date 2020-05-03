@@ -4,3 +4,4 @@ export const popularMoviesGenresURL =
 export const movieURL = 'https://api.themoviedb.org/3/movie/';
 export const movieSearchURL = 'https://api.themoviedb.org/3/search/movie?';
 export const castURL = 'https://api.themoviedb.org/3/person/';
+export const popularPeopleURL = 'https://api.themoviedb.org/3/person/popular';

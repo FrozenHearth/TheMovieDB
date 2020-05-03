@@ -1,0 +1,6 @@
+.person-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 120em;
+  margin: 15em auto 2em -3em;
+}
