@@ -35,7 +35,6 @@ class PersonsCard extends Component {
   };
   componentDidMount() {
     this.props.actionGetPopularPeople().then(res => {
-      console.log(res.results);
       this.setState({
         popularPeople: res.results
       });
