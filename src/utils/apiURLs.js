@@ -5,4 +5,5 @@ export const popularMoviesGenresURL =
 export const movieSearchURL = 'https://api.themoviedb.org/3/search/movie?';
 export const castURL = 'https://api.themoviedb.org/3/person/';
 export const popularPeopleURL = 'https://api.themoviedb.org/3/person/popular';
-export const nowPlayingMoviesURL = `${movieURL}now_playing`
+export const nowPlayingMoviesURL = `${movieURL}now_playing`;
+export const upcomingMoviesURL = `${movieURL}upcoming`;

@@ -115,12 +115,7 @@ class Navbar extends Component {
           style={
             path === '/'
               ? { backgroundColor: 'rgb(149, 134, 247)' }
-              : path === `/movie/:id` ||
-                path === '/people/:id' ||
-                path === '/movies' ||
-                path === '/popular' ||
-                path === '/people' ||
-                path === '/now-playing'
+              : path !== ''
               ? { backgroundColor: 'rgb(66,66,66)' }
               : ''
           }
@@ -159,7 +154,13 @@ class Navbar extends Component {
                       >
                         Now Playing
                       </MenuItem>
-                      <MenuItem onClick={popupState.close}>Upcoming</MenuItem>
+                      <MenuItem
+                        onClick={() =>
+                          this.props.history.push('/upcoming-movies')
+                        }
+                      >
+                        Upcoming
+                      </MenuItem>
                     </Menu>
                   </React.Fragment>
                 )}

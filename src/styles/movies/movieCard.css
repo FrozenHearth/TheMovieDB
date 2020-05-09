@@ -5,7 +5,8 @@
 }
 
 .popular-movies-card-container,
-.now-playing-movies-card-container {
+.now-playing-movies-card-container,
+.upcoming-movies-card-container {
   width: 120em;
   display: flex;
   flex-wrap: wrap;
