@@ -12,6 +12,7 @@ import PopularMovies from './components/movies/Popular/PopularMovies';
 import MovieDetails from './common/MovieDetails/MovieDetails';
 import PersonsList from './components/people/List/index';
 import NowPlaying from './components/movies/NowPlaying/NowPlaying';
+import UpcomingMovies from './components/movies/Upcoming/UpcomingMovies';
 
 const rootElement = document.getElementById('root');
 
@@ -26,6 +27,7 @@ render(
           <Route exact path={`/people`} component={PersonsList} />
           <Route exact path={`/popular`} component={PopularMovies} />
           <Route exact path={`/now-playing`} component={NowPlaying} />
+          <Route exact path={`/upcoming-movies`} component={UpcomingMovies} />
         </Switch>
       </ScrollIntoView>
     </Router>
