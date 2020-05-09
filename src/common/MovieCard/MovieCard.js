@@ -74,17 +74,80 @@ class MovieCard extends Component {
     }
   }
   render() {
-    const { popularMovies, classes } = this.props;
+    const { popularMovies, classes, nowPlayingMovies } = this.props;
 
     const { activePath } = this.state;
 
     return (
       <>
-        {popularMovies
+        {activePath === '/' || activePath === '/popular'
           ? popularMovies.map((movie, index) => (
               <Card
                 className={
                   activePath === '/popular'
+                    ? `${classes.popularMoviesCard}`
+                    : activePath === '/'
+                    ? `${classes.movieCard}`
+                    : ''
+                }
+                key={index}
+              >
+                <Link className={classes.btnLink} to={`/movie/${movie.id}`}>
+                  <CardMedia>
+                    <img
+                      className="movie-poster-x"
+                      src={`${imageURL}${movie.poster_path}`}
+                      alt="Movie poster"
+                    />
+                  </CardMedia>
+                  <CardContent className={classes.cardContent}>
+                    <span className="percentage-circle-container">
+                      <span className="percentage-circle">
+                        <span className="percentage-text">
+                          {movie.vote_average * 10}{' '}
+                        </span>
+                        <span className="percentage">%</span>
+                      </span>
+                      <CircularProgress
+                        className={
+                          movie.vote_average * 10 >= 66
+                            ? `${classes.progressColorHigh}`
+                            : movie.vote_average * 10 > 33 &&
+                              movie.vote_average * 10 < 66
+                            ? `${classes.progressColorMedium}`
+                            : movie.vote_average * 10 < 33
+                            ? `${classes.progressColorLow}`
+                            : ``
+                        }
+                        variant="static"
+                        value={movie.vote_average * 10}
+                      />
+                    </span>
+                    <Typography
+                      className={classes.movieTitle}
+                      variant="h6"
+                      component="h2"
+                    >
+                      {trunc(movie.title, 30)}
+                    </Typography>
+                    <Typography
+                      className={classes.movieSubtext}
+                      variant="body1"
+                      gutterBottom
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {moment(movie.release_date).format('LL')}
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </Card>
+            ))
+          : activePath === '/now-playing'
+          ? nowPlayingMovies.map((movie, index) => (
+              <Card
+                className={
+                  activePath === '/now-playing'
                     ? `${classes.popularMoviesCard}`
                     : activePath === '/'
                     ? `${classes.movieCard}`

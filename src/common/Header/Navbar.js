@@ -12,11 +12,7 @@ import Logo from '../../assets/images/tmdbLogo.svg';
 import { AppBar, Toolbar, InputBase, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import PopupState, {
-  bindTrigger,
-  bindMenu,
-  bindHover
-} from 'material-ui-popup-state';
+import PopupState, { bindMenu, bindHover } from 'material-ui-popup-state';
 
 const styles = {
   searchMoviesInputWrapper: {
@@ -123,7 +119,8 @@ class Navbar extends Component {
                 path === '/people/:id' ||
                 path === '/movies' ||
                 path === '/popular' ||
-                path === '/people'
+                path === '/people' ||
+                path === '/now-playing'
               ? { backgroundColor: 'rgb(66,66,66)' }
               : ''
           }
@@ -157,7 +154,9 @@ class Navbar extends Component {
                       >
                         Popular
                       </MenuItem>
-                      <MenuItem onClick={popupState.close}>
+                      <MenuItem
+                        onClick={() => this.props.history.push('/now-playing')}
+                      >
                         Now Playing
                       </MenuItem>
                       <MenuItem onClick={popupState.close}>Upcoming</MenuItem>

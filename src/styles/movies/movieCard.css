@@ -4,7 +4,8 @@
   margin: 6em auto 2em auto;
 }
 
-.popular-movies-card-container {
+.popular-movies-card-container,
+.now-playing-movies-card-container {
   width: 120em;
   display: flex;
   flex-wrap: wrap;
