@@ -1,4 +1,4 @@
-## TheMovieDB
+# TheMovieDB
 
 Made with React, React-Redux & Material-UI.
 
