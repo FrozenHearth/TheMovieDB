@@ -1,4 +1,4 @@
 ## TheMovieDB
 
-Created using React, Material-UI & axios.
+Created using React, React-Redux & Material-UI.
 
