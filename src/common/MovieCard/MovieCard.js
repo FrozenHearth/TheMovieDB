@@ -17,7 +17,7 @@ const styles = {
     margin: '0 0 7em 4em',
     width: '20em',
     position: 'relative',
-    left: '12em'
+    left: '9em'
   },
   popularMoviesCard: {
     margin: '0 0 3em 4em',

@@ -40,10 +40,10 @@
   font-size: 3em;
 }
 
-.content-header {
+.content-header-landing {
   display: inline-block;
   position: relative;
   top: 1em;
-  left: 8em;
+  left: 6.5em;
   font-weight: 400;
 }

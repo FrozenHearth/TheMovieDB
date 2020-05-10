@@ -15,8 +15,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 export const LoadMoreButtonStyles = {
   loadMoreBtn: {
-    width: '55.3em',
-    left: '7.9em',
+    width: '58.3em',
+    left: '6.5em',
     marginBottom: '2em',
     textTransform: 'capitalize',
     fontSize: '2em',
@@ -110,7 +110,7 @@ class LandingPage extends Component {
           </div>
         </div>
 
-        <h1 className="content-header">What's Trending</h1>
+        <h1 className="content-header-landing">What's Trending</h1>
         <div className="movie-card-container">
           <MovieCard
             {...other}
