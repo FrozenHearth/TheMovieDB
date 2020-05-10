@@ -18,7 +18,7 @@ const styles = {
   searchMoviesInputWrapper: {
     alignItems: 'center',
     padding: '1em 0',
-    backgroundColor: 'rgb(149, 134, 247)'
+    backgroundColor: 'rgb(3,37,65)'
   },
   searchMoviesInput: {
     width: '12em'
@@ -107,21 +107,10 @@ class Navbar extends Component {
 
   render() {
     const { classes } = this.props;
-    const { path } = this.props.match;
     const { searchResults, searchTerm, closeSearchResults } = this.state;
     return (
       <>
-        <AppBar
-          style={
-            path === '/'
-              ? { backgroundColor: 'rgb(149, 134, 247)' }
-              : path !== ''
-              ? { backgroundColor: 'rgb(66,66,66)' }
-              : ''
-          }
-          className={classes.searchMoviesInputWrapper}
-          position="fixed"
-        >
+        <AppBar className={classes.searchMoviesInputWrapper} position="fixed">
           <img
             onClick={this.redirectToHomePage}
             src={Logo}
