@@ -1,3 +1,7 @@
+:root {
+  --tmdb-blue: rgb(3, 37, 65);
+}
+
 * {
   box-sizing: border-box;
 }

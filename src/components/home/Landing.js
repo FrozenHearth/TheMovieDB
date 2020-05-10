@@ -10,17 +10,45 @@ import {
 } from '../../redux/actions/popularMovies/action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Button, CircularProgress } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+export const LoadMoreButtonStyles = {
+  loadMoreBtn: {
+    width: '55.3em',
+    left: '7.9em',
+    marginBottom: '2em',
+    textTransform: 'capitalize',
+    fontSize: '2em',
+    color: '#fff',
+    background: 'rgb(3, 37, 65)',
+    '&:hover': {
+      background: 'rgb(3, 37, 55)',
+      color: 'rgb(255, 240, 230)'
+    }
+  },
+  loadingProgress: {
+    position: 'absolute',
+    top: '25%',
+    left: '47%',
+    color: '#fff'
+  }
+};
 
 class LandingPage extends Component {
   state = {
     popularMovies: [],
-    popularMoviesGenres: []
+    popularMoviesGenres: [],
+    pageNumber: 1,
+    loadingPopularMovies: null,
+    disableBtn: null
   };
 
   componentDidMount() {
-    this.props.actionGetPopularMovies().then(res => {
+    const { pageNumber } = this.state;
+    this.props.actionGetPopularMovies(pageNumber).then(res => {
       this.setState({
-        popularMovies: res.results.slice(0, 12)
+        popularMovies: res.results
       });
     });
     this.props.actionGetGenresForPopularMovies().then(genres => {
@@ -29,13 +57,49 @@ class LandingPage extends Component {
       });
     });
   }
+  loadMorePopularResults = () => {
+    this.setState(
+      {
+        pageNumber: this.state.pageNumber + 1,
+        loadingPopularMovies: true,
+        disableBtn: true
+      },
+      () => {
+        this.props
+          .actionGetPopularMovies(this.state.pageNumber)
+          .then(res => {
+            this.setState({
+              popularMovies: [...this.state.popularMovies].concat(res.results)
+            });
+          })
+          .then(() => {
+            this.setState({
+              loadingPopularMovies: false,
+              disableBtn: false
+            });
+          })
+          .catch(() =>
+            this.setState({
+              loadingPopularMovies: false,
+              disableBtn: false
+            })
+          );
+      }
+    );
+  };
   render() {
-    const { popularMovies, popularMoviesGenres } = this.state;
+    const {
+      popularMovies,
+      popularMoviesGenres,
+      disableBtn,
+      loadingPopularMovies
+    } = this.state;
+    const { classes, ...other } = this.props;
 
     return (
       <>
         <div className="homepage-wrapper">
-          <Navbar {...this.state} {...this.props} />
+          <Navbar {...this.state} {...other} />
           <div className="hero-container">
             <img className="hero-banner" src={HeroBanner} alt="Hero" />
             <h2 className="hero-text-header">Welcome to TheMovieDB.</h2>
@@ -49,11 +113,22 @@ class LandingPage extends Component {
         <h1 className="content-header">What's Trending</h1>
         <div className="movie-card-container">
           <MovieCard
-            {...this.props}
+            {...other}
             popularMovies={popularMovies}
             popularMoviesGenres={popularMoviesGenres}
           />
         </div>
+        <Button
+          disabled={disableBtn}
+          variant="outlined"
+          className={classes.loadMoreBtn}
+          onClick={this.loadMorePopularResults}
+        >
+          Load More...
+          {loadingPopularMovies && (
+            <CircularProgress className={classes.loadingProgress} size={24} />
+          )}
+        </Button>
       </>
     );
   }
@@ -69,4 +144,7 @@ const mapDispatchToProps = dispatch => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(LandingPage);
+export default connect(
+  null,
+  mapDispatchToProps
+)(withStyles(LoadMoreButtonStyles)(LandingPage));

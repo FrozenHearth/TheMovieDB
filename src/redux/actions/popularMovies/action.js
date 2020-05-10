@@ -8,11 +8,11 @@ import {
   popularMoviesGenresURL
 } from '../../../utils/apiURLs';
 
-export const actionGetPopularMovies = () => {
+export const actionGetPopularMovies = pageNumber => {
   return async dispatch => {
     try {
       const result = await axios.get(
-        `${popularMoviesURL}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+        `${popularMoviesURL}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${pageNumber}`
       );
 
       dispatch({
