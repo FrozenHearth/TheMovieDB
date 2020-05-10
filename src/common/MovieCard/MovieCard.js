@@ -14,7 +14,7 @@ import { trunc } from '../../utils/truncateString';
 
 const styles = {
   movieCard: {
-    margin: '0 6em 7em 4em',
+    margin: '0 0 7em 4em',
     width: '20em',
     position: 'relative',
     left: '12em'
