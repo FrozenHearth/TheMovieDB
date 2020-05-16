@@ -66,13 +66,14 @@ const styles = {
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchTerm: '',
+      searchResults: [],
+      closeSearchResults: true
+    };
     this.getSearchResults = _.debounce(this.getSearchResults, 2000);
   }
-  state = {
-    searchTerm: '',
-    searchResults: [],
-    closeSearchResults: true
-  };
+
   handleChange = e => {
     const { name, value } = e.target;
     const { searchTerm } = this.state;
