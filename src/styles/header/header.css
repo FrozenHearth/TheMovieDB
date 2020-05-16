@@ -34,8 +34,6 @@
 .search {
   background-color: rgba(255, 255, 255, 0.15);
   margin: 0 auto;
-  /* position: relative;
-  left: 37em; */
 }
 
 .search:hover {
@@ -43,7 +41,6 @@
 }
 
 input {
-  text-indent: 1em;
   caret-color: white !important;
   color: white !important;
 }

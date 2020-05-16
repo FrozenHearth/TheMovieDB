@@ -1,5 +1,3 @@
-// ?api_key=<<api_key>>&language=en-US&page=1
-
 import axios from 'axios';
 import { GET_UPCOMING_MOVIES } from './actionTypes';
 import { upcomingMoviesURL } from '../../../utils/apiURLs';
