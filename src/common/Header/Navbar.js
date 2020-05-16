@@ -5,14 +5,16 @@ import CloseIcon from '@material-ui/icons/Close';
 import { withStyles } from '@material-ui/core/styles';
 import SearchResults from './SearchResults';
 import '../../styles/header/header.css';
-import axios from 'axios';
-import { movieSearchURL } from '../../utils/apiURLs';
 import Debounce from 'react-debounce-component';
 import Logo from '../../assets/images/tmdbLogo.svg';
 import { AppBar, Toolbar, InputBase, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindMenu, bindHover } from 'material-ui-popup-state';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionGlobalSearch } from '../../redux/actions/search/action';
+import _ from 'lodash';
 
 const styles = {
   searchMoviesInputWrapper: {
@@ -21,7 +23,7 @@ const styles = {
     backgroundColor: 'rgb(3,37,65)'
   },
   searchMoviesInput: {
-    width: '12em'
+    width: '17em'
   },
   searchIcon: {
     color: 'white'
@@ -62,26 +64,34 @@ const styles = {
 };
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.getSearchResults = _.debounce(this.getSearchResults, 2000);
+  }
   state = {
     searchTerm: '',
     searchResults: [],
     closeSearchResults: true
   };
   handleChange = e => {
-    const { searchTerm } = this.state;
     const { name, value } = e.target;
+    const { searchTerm } = this.state;
     this.setState({
       [name]: value
     });
+    this.getSearchResults(searchTerm);
+  };
 
+  getSearchResults = searchTerm => {
     if (searchTerm.trim() !== '') {
-      axios
-        .get(
-          `${movieSearchURL}api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=true&query=${searchTerm}`
-        )
-        .then(item => {
-          this.setState({ searchResults: item.data.results.slice(0, 10) });
-        });
+      this.props
+        .actionGlobalSearch(searchTerm)
+        .then(res => {
+          this.setState({
+            searchResults: res.results
+          });
+        })
+        .catch(err => console.log(err));
     } else {
       this.setState({
         searchResults: []
@@ -124,30 +134,19 @@ class Navbar extends Component {
                 {popupState => (
                   <React.Fragment>
                     <Typography variant="h6">
-                      <button
-                        className={classes.navItemMovie}
-                        {...bindHover(popupState)}
-                      >
+                      <button className={classes.navItemMovie} {...bindHover(popupState)}>
                         {' '}
                         Movies
                       </button>
                     </Typography>
                     <Menu style={{ top: '4em' }} {...bindMenu(popupState)}>
-                      <MenuItem
-                        onClick={() => this.props.history.push('/popular')}
-                      >
+                      <MenuItem onClick={() => this.props.history.push('/popular')}>
                         Popular
                       </MenuItem>
-                      <MenuItem
-                        onClick={() => this.props.history.push('/now-playing')}
-                      >
+                      <MenuItem onClick={() => this.props.history.push('/now-playing')}>
                         Now Playing
                       </MenuItem>
-                      <MenuItem
-                        onClick={() =>
-                          this.props.history.push('/upcoming-movies')
-                        }
-                      >
+                      <MenuItem onClick={() => this.props.history.push('/upcoming-movies')}>
                         Upcoming
                       </MenuItem>
                     </Menu>
@@ -158,18 +157,13 @@ class Navbar extends Component {
                 {popupState => (
                   <React.Fragment>
                     <Typography variant="h6">
-                      <button
-                        {...bindHover(popupState)}
-                        className={classes.navItemPeople}
-                      >
+                      <button {...bindHover(popupState)} className={classes.navItemPeople}>
                         {' '}
                         People
                       </button>
                     </Typography>
                     <Menu style={{ top: '4em' }} {...bindMenu(popupState)}>
-                      <MenuItem
-                        onClick={() => this.props.history.push('/people')}
-                      >
+                      <MenuItem onClick={() => this.props.history.push('/people')}>
                         Popular People
                       </MenuItem>
                     </Menu>
@@ -181,6 +175,9 @@ class Navbar extends Component {
 
           <Toolbar className={classes.headerToolbar}>
             <div className="search">
+              <IconButton className={classes.searchIcon}>
+                <SearchIcon />
+              </IconButton>
               <InputBase
                 autoComplete="off"
                 name="searchTerm"
@@ -189,21 +186,16 @@ class Navbar extends Component {
                 className={classes.searchMoviesInput}
                 placeholder="Search Movies"
               />
-              <IconButton className={classes.searchIcon}>
-                <SearchIcon />
-              </IconButton>
+
               {searchTerm !== '' ? (
-                <IconButton
-                  onClick={this.resetSearchTerm}
-                  className={classes.closeIcon}
-                >
+                <IconButton onClick={this.resetSearchTerm} className={classes.closeIcon}>
                   <CloseIcon />
                 </IconButton>
               ) : (
                 ''
               )}
               {searchResults.length !== 0 ? (
-                <Debounce ms={1000}>
+                <Debounce ms={2000}>
                   <SearchResults
                     searchTerm={searchTerm}
                     searchResults={searchResults}
@@ -220,4 +212,13 @@ class Navbar extends Component {
   }
 }
 
-export default withStyles(styles)(Navbar);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      actionGlobalSearch
+    },
+    dispatch
+  );
+};
+
+export default connect(null, mapDispatchToProps)(withStyles(styles)(Navbar));
