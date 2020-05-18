@@ -19,13 +19,22 @@ const styles = {
 };
 
 class SearchResults extends Component {
-  getMediaType = mediaType => {
+  getSearchResultsCategory = mediaType => {
     if (mediaType === 'movie') {
       return 'in Movies';
     } else if (mediaType === 'tv') {
       return 'in TV Shows';
     } else if (mediaType === 'person') {
       return 'in People';
+    }
+  };
+  getSearchResultsCategoryLinks = (mediaType, id) => {
+    if (mediaType === 'movie') {
+      return `/movie/${id}`;
+    } else if (mediaType === 'tv') {
+      return '';
+    } else if (mediaType === 'person') {
+      return `/people/${id}`;
     }
   };
   render() {
@@ -42,7 +51,11 @@ class SearchResults extends Component {
       >
         {searchResults && closeSearchResults
           ? searchResults.map((item, index) => (
-              <Link key={index} className={classes.movieLink} to={`/movie/${item.id}`}>
+              <Link
+                key={index}
+                className={classes.movieLink}
+                to={this.getSearchResultsCategoryLinks(item.media_type, item.id)}
+              >
                 <List
                   onClick={() => this.props.closeSearchResultsDropdown()}
                   className={classes.root}
@@ -52,7 +65,7 @@ class SearchResults extends Component {
                   <ListItem className={classes.listItemHover} button>
                     <ListItemText
                       primary={item.title ? item.title : item.name}
-                      secondary={this.getMediaType(item.media_type)}
+                      secondary={this.getSearchResultsCategory(item.media_type)}
                     />
                     {item.backdrop_path ? (
                       <Avatar src={`${imageURL}${item.backdrop_path}`} />
