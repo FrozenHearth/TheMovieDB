@@ -8,7 +8,9 @@ Made with React, React-Redux & Material-UI.
 - Browse individual details of each of the above.
 - Browse popular people.
 - Search for any English-language movies. 
+- Search for movies, people & TV shows.
 
 ### To be Added
 
-- Search will be enhanced in the future to allow the user to search not just for movies, but also people & TV shows.
+- List TV Shows & its details
+
