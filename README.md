@@ -6,7 +6,7 @@ Made with React, React-Redux & Material-UI.
 
 - Browse popular, upcoming & now-playing movies list.
 - Browse individual details of each of the above.
-- Browse popular people.
+- Browse popular actors.
 - Search for any English-language movies. 
 - Search for movies, people & TV shows.
 
