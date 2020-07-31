@@ -1,6 +1,6 @@
 # TheMovieDB
 
-Made with React, React-Redux & Material-UI.
+Made with React, Redux & Material-UI.
 
 ### Features
 
