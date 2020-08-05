@@ -10,7 +10,7 @@ Made with React, Redux & Material-UI.
 - Search for any English-language movies. 
 - Search for movies, people & TV shows.
 
-### To be Added
+### TBA
 
 - List TV Shows & its details
 
